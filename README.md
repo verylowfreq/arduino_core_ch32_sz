@@ -9,7 +9,16 @@ Suzuduino UNO と SUZUNO32RVは、RISC-Vのマイコンボードで、わたし=
 Add the following link in the "*Additional Boards Managers URLs*" field:
 追加のボードマネージャURLに以下のリンクを追記してください。
 
-https://github.com/verylowfreq/board_manager_files/raw/custom/package_ch32v_sz_index.json
+https://github.com/verylowfreq/arduino_core_ch32_sz/raw/custom/package_ch32v_sz_index.json
+
+Changes / 変更点：
+
+ - Add Suzuduino UNO V1b
+   - Same as CH32V203C8
+ - Add SUZUNO32RV
+   - Same as CH32V203C8
+ - Add .data_flash1 section to linker script
+   - Storage size is 160KB. If you use this section, you cannnot upload the sketch in Arduino IDE. Use external tools like LinkUtility and WCHISPStudio.
 
 Following is an original documentation. 以下はオリジナルのドキュメントです。
 
