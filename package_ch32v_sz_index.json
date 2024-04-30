@@ -15,7 +15,7 @@
             "category": "Contributed",
             "url": "https://codeload.github.com/verylowfreq/arduino_core_ch32_sz/zip/refs/tags/1.0.4-sz1",
             "archiveFileName": "arduino_core_ch32_sz-1.0.4-sz1.zip",
-            "checksum": "SHA-256:cee3f34985031b06c19ef01a9f388000f786e66bd0e6e3f399f145187b51dc1e",
+            "checksum": "SHA-256:CEE3F34985031B06C19EF01A9F388000F786E66BD0E6E3F399F145187B51DC1E",
             "size": "1013089",
             "boards": [
               {"name": "CH32X035 EVT Board"},		  
