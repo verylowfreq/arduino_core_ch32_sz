@@ -113,6 +113,13 @@
                 "size": "507269"
               },
               {
+                "host": "i686-mingw32",
+                "url": "https://codeload.github.com/TianpeiLee/wch_beforeinstall_linux/tar.gz/refs/tags/1.0.0",
+                "archiveFileName": "wch_beforeinstall_linux-1.0.0.tar.gz",
+                "checksum": "SHA-256:17EF3A94BC46B9EB9AB1FDECC48FCD3880EEB8FCC36E6648626320F0BF2864DC",
+                "size": "507269"
+              },
+              {
                 "host": "x86_64-apple-darwin",
                 "url": "https://codeload.github.com/TianpeiLee/wch_beforeinstall_linux/tar.gz/refs/tags/1.0.0",
                 "archiveFileName": "wch_beforeinstall_linux-1.0.0.tar.gz",
