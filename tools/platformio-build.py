@@ -36,7 +36,7 @@ mcu = env.BoardConfig().get("build.mcu")
 chip_series: str = board.get("build.series", "")[0:-1].upper() + "x"
 variant_h = board.get("build.arduino.openwch.variant_h")
 
-FRAMEWORK_DIR = platform.get_package_dir("framework-arduino-openwch-ch32")
+FRAMEWORK_DIR = platform.get_package_dir("framework-arduino-openwch-ch32-sz")
 assert isdir(FRAMEWORK_DIR)
 
 machine_flags = [

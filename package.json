@@ -1,7 +1,7 @@
 {
-    "description": "Core library for CH32duino",
-    "name": "framework-arduino-openwch-ch32",
+    "description": "Support of Suzuduino UNO and SUZUNO32RV. Core library for CH32duino",
+    "name": "framework-arduino-openwch-ch32-sz",
     "system": "all",
-    "url": "https://github.com/openwch/arduino_core_ch32",
+    "url": "https://github.com/verylowfreq/arduino_core_ch32_sz",
     "version": "0.0.0"
 }

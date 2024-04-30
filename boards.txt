@@ -316,7 +316,6 @@ CH32V20x_EVT.menu.pnum.CH32V203G8.build.IQ_math_RV32=
 CH32V20x_EVT.menu.pnum.CH32V203G8.build.ch_extra_lib=-lprintf
 
 
-
 #Generic CH32V203C8 Board
 CH32V20x_EVT.menu.pnum.CH32V203C8=CH32V203C8
 CH32V20x_EVT.menu.pnum.CH32V203C8.node=NODE_V203C8
@@ -332,6 +331,40 @@ CH32V20x_EVT.menu.pnum.CH32V203C8.build.mabi=ilp32
 CH32V20x_EVT.menu.pnum.CH32V203C8.build.math_lib_gcc=-lm 
 CH32V20x_EVT.menu.pnum.CH32V203C8.build.IQ_math_RV32=
 CH32V20x_EVT.menu.pnum.CH32V203C8.build.ch_extra_lib=-lprintf
+
+
+#Suzuduino UNO V1b (CH32V203K8T6)
+CH32V20x_EVT.menu.pnum.SuzuduinoUNO_V1b=Suzuduino UNO (V1b)
+CH32V20x_EVT.menu.pnum.SuzuduinoUNO_V1b.node=NODE_V203C8
+CH32V20x_EVT.menu.pnum.SuzuduinoUNO_V1b.upload.maximum_size=65536
+CH32V20x_EVT.menu.pnum.SuzuduinoUNO_V1b.upload.maximum_data_size=20480
+CH32V20x_EVT.menu.pnum.SuzuduinoUNO_V1b.build.mcu=QingKe-V4B
+CH32V20x_EVT.menu.pnum.SuzuduinoUNO_V1b.build.board=CH32V203C8
+CH32V20x_EVT.menu.pnum.SuzuduinoUNO_V1b.build.series=CH32V20x
+CH32V20x_EVT.menu.pnum.SuzuduinoUNO_V1b.build.variant=CH32V20x/CH32V203C8
+CH32V20x_EVT.menu.pnum.SuzuduinoUNO_V1b.build.chip=CH32V203
+CH32V20x_EVT.menu.pnum.SuzuduinoUNO_V1b.build.march=rv32imacxw
+CH32V20x_EVT.menu.pnum.SuzuduinoUNO_V1b.build.mabi=ilp32
+CH32V20x_EVT.menu.pnum.SuzuduinoUNO_V1b.build.math_lib_gcc=-lm 
+CH32V20x_EVT.menu.pnum.SuzuduinoUNO_V1b.build.IQ_math_RV32=
+CH32V20x_EVT.menu.pnum.SuzuduinoUNO_V1b.build.ch_extra_lib=-lprintf
+
+
+#SUZUNO32RV (CH32V203C8T6)
+CH32V20x_EVT.menu.pnum.SUZUNO32RV=SUZUNO32RV (V1)
+CH32V20x_EVT.menu.pnum.SUZUNO32RV.node=NODE_V203C8
+CH32V20x_EVT.menu.pnum.SUZUNO32RV.upload.maximum_size=65536
+CH32V20x_EVT.menu.pnum.SUZUNO32RV.upload.maximum_data_size=20480
+CH32V20x_EVT.menu.pnum.SUZUNO32RV.build.mcu=QingKe-V4B
+CH32V20x_EVT.menu.pnum.SUZUNO32RV.build.board=CH32V203C8
+CH32V20x_EVT.menu.pnum.SUZUNO32RV.build.series=CH32V20x
+CH32V20x_EVT.menu.pnum.SUZUNO32RV.build.variant=CH32V20x/CH32V203C8
+CH32V20x_EVT.menu.pnum.SUZUNO32RV.build.chip=CH32V203
+CH32V20x_EVT.menu.pnum.SUZUNO32RV.build.march=rv32imacxw
+CH32V20x_EVT.menu.pnum.SUZUNO32RV.build.mabi=ilp32
+CH32V20x_EVT.menu.pnum.SUZUNO32RV.build.math_lib_gcc=-lm 
+CH32V20x_EVT.menu.pnum.SUZUNO32RV.build.IQ_math_RV32=
+CH32V20x_EVT.menu.pnum.SUZUNO32RV.build.ch_extra_lib=-lprintf
 
 
 #Generic CH32V203C6 Board

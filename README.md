@@ -1,3 +1,20 @@
+# Arduino Core library for CH32V with support of Suzuduino UNO and SUZUNO32RV
+
+Suzuduino UNO and SUZUNO32RV are RISC-V MCU prototyping boards designed by Mitsumine Suzu (it's me!). They are with WCH CH32V203K8T6 for Suzuduino UNO and CH32V203C8T6 for SUZUNO32RV.
+This library has additional support for them.
+
+Suzuduino UNO と SUZUNO32RVは、RISC-Vのマイコンボードで、わたし=三峰スズにより設計されました。Suzuduino UNOには CH32V203K8T6 が、SUZUNO32RVにはCH32V203C8T6が搭載されています。
+このライブラリは、アップストリームに加えて、これらのボードのサポートを追加したものです。
+
+Add the following link in the "*Additional Boards Managers URLs*" field:
+追加のボードマネージャURLに以下のリンクを追記してください。
+
+https://github.com/verylowfreq/board_manager_files/raw/custom/package_ch32v_sz_index.json
+
+Following is an original documentation. 以下はオリジナルのドキュメントです。
+
+----
+
 # Arduino core support for CH32 EVT Boards
 
 * [Introduction](https://github.com/openwch/arduino_core_ch32#Introduction)<br>
