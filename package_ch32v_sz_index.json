@@ -39,7 +39,12 @@
                 "packager": "WCH",
                 "name": "beforeinstall",
                 "version": "1.0.0"
-              }			
+              },
+              {
+                "packager": "verylowfreq",
+                "name": "wchisp-binary",
+                "version": "0.0.1"
+              }
             ]
           }		
         ],
@@ -127,7 +132,34 @@
                 "size": "507269"
               }				
             ]
-          }		
+          },
+          {
+            "name": "wchisp-binary",
+            "version": "0.0.1:",
+            "systems": [
+              {
+                "host": "i686-mingw32",
+                "url": "https://codeload.github.com/verylowfreq/wchisp_binary_package/zip/refs/tags/20240430",
+                "archiveFileName": "wchisp_binary_package-20240430.zip",
+                "checksum": "SHA-256:567ba7dfb3b0fe2118c9dcee7af1f016a6d046c05f8762da6c7e57d08e7cfa49",
+                "size": "622468"
+              },
+              {
+                "host": "x86_64-linux-gnu",
+                "url": "https://codeload.github.com/verylowfreq/wchisp_binary_package/zip/refs/tags/20240430",
+                "archiveFileName": "wchisp_binary_package-20240430.zip",
+                "checksum": "SHA-256:567ba7dfb3b0fe2118c9dcee7af1f016a6d046c05f8762da6c7e57d08e7cfa49",
+                "size": "622468"
+              },
+              {
+                "host": "x86_64-apple-darwin",
+                "url": "https://codeload.github.com/verylowfreq/wchisp_binary_package/zip/refs/tags/20240430",
+                "archiveFileName": "wchisp_binary_package-20240430.zip",
+                "checksum": "SHA-256:567ba7dfb3b0fe2118c9dcee7af1f016a6d046c05f8762da6c7e57d08e7cfa49",
+                "size": "622468"
+              }
+            ]
+          }
         ]
       }
     ]

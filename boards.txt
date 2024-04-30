@@ -391,6 +391,10 @@ CH32V20x_EVT.menu.upload_method.swdMethod.upload.protocol=
 CH32V20x_EVT.menu.upload_method.swdMethod.upload.options=
 CH32V20x_EVT.menu.upload_method.swdMethod.upload.tool=WCH_linkE
 
+CH32V20x_EVT.menu.upload_method.wchisp=WCHISP (USB upload)
+CH32V20x_EVT.menu.upload_method.wchisp.upload.protocol=
+CH32V20x_EVT.menu.upload_method.wchisp.upload.options=
+CH32V20x_EVT.menu.upload_method.wchisp.upload.tool=WCHISP_USB
 
 
 # Optimizations

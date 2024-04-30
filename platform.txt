@@ -171,6 +171,14 @@ tools.WCH_linkE.upload.pattern="{path}{cmd}" -f "{upload.config}" -c init -c hal
 #tools.WCH_linkE.upload.pattern="{path}{cmd}" -f {upload.config} -c init -c halt -c "program {{build.path}/{build.project_name}.elf}; verify_image {{build.path}/{build.project_name}.elf}; wlink_reset_resume;  exit;"
 
 
+## WCHISP (from ch32-rs)
+tools.WCHISP_USB.path={runtime.tools.wchisp-binary-package.path}/bin/
+tools.WCHISP_USB.cmd=wchisp
+tools.WCHISP_USB.upload.params.verbose=
+tools.WCHISP_USB.upload.params.quiet=
+tools.WCHISP_USB.upload.pattern="{path}{cmd}" "{{build.path}/{build.project_name}.elf}"
+
+
 # Debugger configuration (general options)
 # ----------------------------------------
 # EXPERIMENTAL feature:
