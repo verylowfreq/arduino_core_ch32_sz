@@ -134,7 +134,6 @@
             ]
           },
           {
-            "packager": "WCH",
             "name": "wchisp-binary",
             "version": "0.0.1",
             "systems": [
