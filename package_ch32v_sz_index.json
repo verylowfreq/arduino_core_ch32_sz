@@ -39,6 +39,11 @@
                 "packager": "WCH",
                 "name": "beforeinstall",
                 "version": "1.0.0"
+              },
+              {
+                "packager": "verylowfreq",
+                "name": "wchisp-binary",
+                "version": "0.0.1"
               }
             ]
           }		
@@ -129,6 +134,7 @@
             ]
           },
           {
+            "packager": "verylowfreq",
             "name": "wchisp-binary",
             "version": "0.0.1",
             "systems": [
