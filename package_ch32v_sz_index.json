@@ -11,12 +11,12 @@
           {
             "name": "CH32 MCU EVT Boards (sz)",
             "architecture": "ch32v",
-            "version": "1.0.4-sz1",
+            "version": "1.0.4-sz2",
             "category": "Contributed",
-            "url": "https://codeload.github.com/verylowfreq/arduino_core_ch32_sz/zip/refs/tags/1.0.4-sz1",
-            "archiveFileName": "arduino_core_ch32_sz-1.0.4-sz1.zip",
-            "checksum": "SHA-256:CEE3F34985031B06C19EF01A9F388000F786E66BD0E6E3F399F145187B51DC1E",
-            "size": "1013089",
+            "url": "https://codeload.github.com/verylowfreq/arduino_core_ch32_sz/zip/refs/tags/1.0.4-sz2",
+            "archiveFileName": "arduino_core_ch32_sz-1.0.4-sz2.zip",
+            "checksum": "SHA-256:de12cff13d40529c1d4701e6a1b30043c9aa077b835fbb19b5f77d4fb1ea78ae",
+            "size": "1013517",
             "boards": [
               {"name": "CH32X035 EVT Board"},		  
               {"name": "CH32V30x EVT Board"},
