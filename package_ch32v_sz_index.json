@@ -39,11 +39,6 @@
                 "packager": "WCH",
                 "name": "beforeinstall",
                 "version": "1.0.0"
-              },
-              {
-                "packager": "WCH",
-                "name": "wchisp-binary",
-                "version": "0.0.1"
               }
             ]
           }		
