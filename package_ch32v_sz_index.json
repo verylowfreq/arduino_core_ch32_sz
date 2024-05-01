@@ -41,7 +41,7 @@
                 "version": "1.0.0"
               },
               {
-                "packager": "verylowfreq",
+                "packager": "WCH",
                 "name": "wchisp-binary",
                 "version": "0.0.1"
               }
@@ -134,7 +134,7 @@
             ]
           },
           {
-            "packager": "verylowfreq",
+            "packager": "WCH",
             "name": "wchisp-binary",
             "version": "0.0.1",
             "systems": [
