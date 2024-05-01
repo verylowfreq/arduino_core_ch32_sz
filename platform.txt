@@ -172,7 +172,7 @@ tools.WCH_linkE.upload.pattern="{path}{cmd}" -f "{upload.config}" -c init -c hal
 
 
 ## WCHISP (from ch32-rs)
-tools.WCHISP_USB.path={runtime.tools.wchisp-binary-package.path}/bin/
+tools.WCHISP_USB.path={runtime.tools.wchisp-binary.path}/bin/
 tools.WCHISP_USB.cmd=wchisp
 tools.WCHISP_USB.upload.params.verbose=
 tools.WCHISP_USB.upload.params.quiet=
