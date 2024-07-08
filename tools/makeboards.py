@@ -16,93 +16,98 @@ usb_list = {
         'name': 'Adafruit TinyUSB with USBD',
         'usb_flags': '-DUSBCON -DUSE_TINYUSB -DCFG_TUD_WCH_USBIP_FSDEV=1 "-I{runtime.platform.path}/libraries/Adafruit_TinyUSB_Arduino/src/arduino"'
     },
-    'tinyusb_usbfs': {
-        'name': 'Adafruit TinyUSB with USBFS',
-        'usb_flags': '-DUSBCON -DUSE_TINYUSB -DCFG_TUD_WCH_USBIP_USBFS=1 "-I{runtime.platform.path}/libraries/Adafruit_TinyUSB_Arduino/src/arduino"'
+    'tinyusb_usbd_usbfsh': {
+        'name': 'Adafruit TinyUSB with USBD/USBFS Host',
+        'usb_flags': '-DUSBCON -DUSE_TINYUSB -DCFG_TUD_WCH_USBIP_FSDEV=1 -DCFG_TUH_ENABLED=1 -DCFG_TUH_WCH_USBIP_USBFS=1 "-I{runtime.platform.path}/libraries/Adafruit_TinyUSB_Arduino/src/arduino"'
     },
-    'tinyusb_usbhs': {
-        'name': 'Adafruit TinyUSB with USBHS',
-        'usb_flags': '-DUSBCON -DUSE_TINYUSB -DCFG_TUD_WCH_USBIP_USBHS=1 "-I{runtime.platform.path}/libraries/Adafruit_TinyUSB_Arduino/src/arduino"'
-    },
+    # 'tinyusb_usbfs': {
+    #     'name': 'Adafruit TinyUSB with USBFS Device',
+    #     'usb_flags': '-DUSBCON -DUSE_TINYUSB -DCFG_TUD_WCH_USBIP_USBFS=1 "-I{runtime.platform.path}/libraries/Adafruit_TinyUSB_Arduino/src/arduino"'
+    # },
+    # 'tinyusb_usbhs': {
+    #     'name': 'Adafruit TinyUSB with USBHS',
+    #     'usb_flags': '-DUSBCON -DUSE_TINYUSB -DCFG_TUD_WCH_USBIP_USBHS=1 "-I{runtime.platform.path}/libraries/Adafruit_TinyUSB_Arduino/src/arduino"'
+    # },
 }
 
 # series: name, pnums
 board_list = {
-    'CH32V00x': {
-        'name': 'CH32V00x_EVT',
-        'info': '',
-        'usb': [],
-        'hsi': [48, 24, 8],
-        'hse': [48, 24, 8],
-        'pnums': {
-            'CH32V003F4': {'name': 'CH32V003F4 EVT', 'maximum_size': 16384, 'maximum_data_size': 2048, 'mcu': 'QingKe-V2A', 'chip': 'CH32V003F4'},
-        }
-    },
-    'CH32VM00X': {
-        'name': 'CH32VM00X_EVT',
-        'info': 'including V/M 002 004 005 006 007',
-        'usb': [],
-        'hsi': [48, 24, 8],
-        'hse': [48, 24, 8],
-        'pnums': {
-            'CH32V006K8': {'name': 'CH32V006K8 EVT', 'maximum_size': 63488, 'maximum_data_size': 8192, 'mcu': 'QingKe-V2C', 'chip': 'CH32V006K8'},
-        }
-    },
-    'CH32X035': {
-        'name': 'CH32X035_EVT',
-        'info': '',
-        'usb': [],
-        'hsi': [48, 24, 16, 12, 8],
-        'hse': [],
-        'pnums': {
-            'CH32X035G8U': {'name': 'CH32X035G8U EVT', 'maximum_size': 63488, 'maximum_data_size': 20480, 'mcu': 'QingKe-V4C', 'chip': 'CH32X035G8U'},
-        }
-    },
-    'CH32V10x': {
-        'name': 'CH32V10x_EVT',
-        'info': '-lprintf, CH32V10x_3V3: 3.3V power supply  CH32V10x_5V: 5V power supply',
-        'usb': [],
-        'hsi': [72, 56, 48, 8],
-        'hse': [72, 56, 48, 8],
-        'pnums': {
-            'CH32V103R8T6': {'name': 'CH32V103R8T6 EVT', 'maximum_size': 65536, 'maximum_data_size': 20480, 'mcu': 'QingKe-V3A', 'chip': 'CH32V10x_3V3'},
-        }
-    },
+    # 'CH32V00x': {
+    #     'name': 'CH32V00x_EVT',
+    #     'info': '',
+    #     'usb': [],
+    #     'hsi': [48, 24, 8],
+    #     'hse': [48, 24, 8],
+    #     'pnums': {
+    #         'CH32V003F4': {'name': 'CH32V003F4 EVT', 'maximum_size': 16384, 'maximum_data_size': 2048, 'mcu': 'QingKe-V2A', 'chip': 'CH32V003F4'},
+    #     }
+    # },
+    # 'CH32VM00X': {
+    #     'name': 'CH32VM00X_EVT',
+    #     'info': 'including V/M 002 004 005 006 007',
+    #     'usb': [],
+    #     'hsi': [48, 24, 8],
+    #     'hse': [48, 24, 8],
+    #     'pnums': {
+    #         'CH32V006K8': {'name': 'CH32V006K8 EVT', 'maximum_size': 63488, 'maximum_data_size': 8192, 'mcu': 'QingKe-V2C', 'chip': 'CH32V006K8'},
+    #     }
+    # },
+    # 'CH32X035': {
+    #     'name': 'CH32X035_EVT',
+    #     'info': '',
+    #     'usb': [],
+    #     'hsi': [48, 24, 16, 12, 8],
+    #     'hse': [],
+    #     'pnums': {
+    #         'CH32X035G8U': {'name': 'CH32X035G8U EVT', 'maximum_size': 63488, 'maximum_data_size': 20480, 'mcu': 'QingKe-V4C', 'chip': 'CH32X035G8U'},
+    #     }
+    # },
+    # 'CH32V10x': {
+    #     'name': 'CH32V10x_EVT',
+    #     'info': '-lprintf, CH32V10x_3V3: 3.3V power supply  CH32V10x_5V: 5V power supply',
+    #     'usb': [],
+    #     'hsi': [72, 56, 48, 8],
+    #     'hse': [72, 56, 48, 8],
+    #     'pnums': {
+    #         'CH32V103R8T6': {'name': 'CH32V103R8T6 EVT', 'maximum_size': 65536, 'maximum_data_size': 20480, 'mcu': 'QingKe-V3A', 'chip': 'CH32V10x_3V3'},
+    #     }
+    # },
     'CH32V20x': {
         'name': 'CH32V20x_EVT',
         'info': '',
-        'usb': ['tinyusb_usbd', 'tinyusb_usbfs'],
+        'usb': ['tinyusb_usbd', 'tinyusb_usbd_usbfsh'],
         'hsi': [144, 120, 96, 72, 56, 48, 0],
         'hse': [144, 120, 96, 72, 56, 48, 0],
         'pnums': {
-            'CH32V203RB': {'name': 'CH32V203RB EVT', 'maximum_size': 131072, 'maximum_data_size': 65536, 'mcu': 'QingKe-V4C', 'chip': 'CH32V203'},
-            'CH32V203G8': {'name': 'CH32V203G8 EVT', 'maximum_size': 65536, 'maximum_data_size': 20480, 'mcu': 'QingKe-V4B', 'chip': 'CH32V203'},
-            'CH32V203G6': {'name': 'CH32V203G6 EVT', 'maximum_size': 32768, 'maximum_data_size': 10240, 'mcu': 'QingKe-V4B', 'chip': 'CH32V203'},
-            'CH32V203C8': {'name': 'CH32V203C8', 'maximum_size': 65536, 'maximum_data_size': 20480, 'mcu': 'QingKe-V4B', 'chip': 'CH32V203'},
-            'CH32V203C6': {'name': 'CH32V203C6', 'maximum_size': 32768, 'maximum_data_size': 10240, 'mcu': 'QingKe-V4B', 'chip': 'CH32V203'},
-            'CH32V203G6_ADAFRUIT_QTPY': {'name': 'Adafruit QTPy CH32V203G6', 'maximum_size': 229376, 'maximum_data_size': 10240, 'mcu': 'QingKe-V4B', 'chip': 'CH32V203'},
+            # 'CH32V203RB': {'name': 'CH32V203RB EVT', 'maximum_size': 131072, 'maximum_data_size': 65536, 'mcu': 'QingKe-V4C', 'chip': 'CH32V203'},
+            # 'CH32V203G8': {'name': 'CH32V203G8 EVT', 'maximum_size': 65536, 'maximum_data_size': 20480, 'mcu': 'QingKe-V4B', 'chip': 'CH32V203'},
+            # 'CH32V203G6': {'name': 'CH32V203G6 EVT', 'maximum_size': 32768, 'maximum_data_size': 10240, 'mcu': 'QingKe-V4B', 'chip': 'CH32V203'},
+            # 'CH32V203C8': {'name': 'CH32V203C8', 'maximum_size': 65536, 'maximum_data_size': 20480, 'mcu': 'QingKe-V4B', 'chip': 'CH32V203'},
+            # 'CH32V203C6': {'name': 'CH32V203C6', 'maximum_size': 32768, 'maximum_data_size': 10240, 'mcu': 'QingKe-V4B', 'chip': 'CH32V203'},
+            # 'CH32V203G6_ADAFRUIT_QTPY': {'name': 'Adafruit QTPy CH32V203G6', 'maximum_size': 229376, 'maximum_data_size': 10240, 'mcu': 'QingKe-V4B', 'chip': 'CH32V203'},
+            'CH32V203C8': {'name': 'Suzuno32RV/SuzuduinoUNO', 'maximum_size': 65536, 'maximum_data_size': 20480, 'mcu': 'QingKe-V4B', 'chip': 'CH32V203'}
         }
     },
-    'CH32V30x': {
-        'name': 'CH32V30x_EVT',
-        'info': '-lprintfloat, CH32V30x_C: connected product_line  CH32V30x: normal product_line',
-        'usb': ['tinyusb_usbhs', 'tinyusb_usbfs'],
-        'hsi': [144, 120, 96, 72, 56, 48, 0],
-        'hse': [144, 120, 96, 72, 56, 48, 0],
-        'pnums': {
-            'CH32V307VCT6': {'name': 'CH32V307VCT6 EVT', 'maximum_size': 262144, 'maximum_data_size': 65536, 'mcu': 'QingKe-V4F', 'chip': 'CH32V30x_C'},
-        }
-    },
-    'CH32L10x': {
-        'name': 'CH32L10x_EVT',
-        'info': '-lprintf',
-        'usb': [],
-        'hsi': [96, 72, 56, 48, 0, 'HSI_LP'],
-        'hse': [96, 72, 56, 48, 0],
-        'pnums': {
-            'CH32L103C8T6': {'name': 'CH32L103C8T6 EVT', 'maximum_size': 65536, 'maximum_data_size': 20480, 'mcu': 'QingKe-V4C', 'chip': 'CH32L10x'},
-        }
-    }
+    # 'CH32V30x': {
+    #     'name': 'CH32V30x_EVT',
+    #     'info': '-lprintfloat, CH32V30x_C: connected product_line  CH32V30x: normal product_line',
+    #     'usb': ['tinyusb_usbhs', 'tinyusb_usbfs'],
+    #     'hsi': [144, 120, 96, 72, 56, 48, 0],
+    #     'hse': [144, 120, 96, 72, 56, 48, 0],
+    #     'pnums': {
+    #         'CH32V307VCT6': {'name': 'CH32V307VCT6 EVT', 'maximum_size': 262144, 'maximum_data_size': 65536, 'mcu': 'QingKe-V4F', 'chip': 'CH32V30x_C'},
+    #     }
+    # },
+    # 'CH32L10x': {
+    #     'name': 'CH32L10x_EVT',
+    #     'info': '-lprintf',
+    #     'usb': [],
+    #     'hsi': [96, 72, 56, 48, 0, 'HSI_LP'],
+    #     'hse': [96, 72, 56, 48, 0],
+    #     'pnums': {
+    #         'CH32L103C8T6': {'name': 'CH32L103C8T6 EVT', 'maximum_size': 65536, 'maximum_data_size': 20480, 'mcu': 'QingKe-V4C', 'chip': 'CH32L10x'},
+    #     }
+    # }
 }
 
 
