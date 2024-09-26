@@ -85,7 +85,7 @@ board_list = {
             # 'CH32V203C8': {'name': 'CH32V203C8', 'maximum_size': 65536, 'maximum_data_size': 20480, 'mcu': 'QingKe-V4B', 'chip': 'CH32V203'},
             # 'CH32V203C6': {'name': 'CH32V203C6', 'maximum_size': 32768, 'maximum_data_size': 10240, 'mcu': 'QingKe-V4B', 'chip': 'CH32V203'},
             # 'CH32V203G6_ADAFRUIT_QTPY': {'name': 'Adafruit QTPy CH32V203G6', 'maximum_size': 229376, 'maximum_data_size': 10240, 'mcu': 'QingKe-V4B', 'chip': 'CH32V203'},
-            'CH32V203C8': {'name': 'Suzuno32RV/SuzuduinoUNO', 'maximum_size': 65536, 'maximum_data_size': 20480, 'mcu': 'QingKe-V4B', 'chip': 'CH32V203'}
+            'CH32V203C8': {'name': 'Suzuno32RV/SuzuduinoUNO', 'maximum_size': 65536, 'maximum_data_size': 20480, 'mcu': 'QingKe-V4B', 'chip': 'CH32V203', 'buildflags': '-DLED_BUILTIN=PA5'}
         }
     },
     # 'CH32V30x': {
@@ -164,7 +164,7 @@ def build_pnum(series, values):
         print(f'{menu}.build.mabi={mcu_list[mcu]["mabi"]}')
         print(f'{menu}.build.math_lib_gcc=-lm')
         print(f'{menu}.build.IQ_math_RV32=')
-        print(f'{menu}.build.ch_extra_lib={mcu_list[mcu]["ch_extra_lib"]}')
+        print(f'{menu}.build.ch_extra_lib={(mcu_list[mcu]["ch_extra_lib"]) or ""}')
         print()
 
 
@@ -188,17 +188,17 @@ def build_upload(series, values):
     name = values["name"]
     menu = f'{name}.menu.upload_method'
 
-    menu_swd = f'{menu}.swdMethod'
-    print(f'{menu_swd}=WCH-SWD')
-    print(f'{menu_swd}.upload.protocol=')
-    print(f'{menu_swd}.upload.options=')
-    print(f'{menu_swd}.upload.tool=WCH_linkE')
-
     menu_isp = f'{menu}.ispMethod'
     print(f'{menu_isp}=WCH-ISP')
     print(f'{menu_isp}.upload.protocol=')
     print(f'{menu_isp}.upload.options=')
     print(f'{menu_isp}.upload.tool=wchisp')
+
+    menu_swd = f'{menu}.swdMethod'
+    print(f'{menu_swd}=WCH-SWD')
+    print(f'{menu_swd}.upload.protocol=')
+    print(f'{menu_swd}.upload.options=')
+    print(f'{menu_swd}.upload.tool=WCH_linkE')
 
     print()
 

@@ -41,6 +41,7 @@ CH32V20x_EVT.menu.pnum.CH32V203C8.build.mabi=ilp32
 CH32V20x_EVT.menu.pnum.CH32V203C8.build.math_lib_gcc=-lm
 CH32V20x_EVT.menu.pnum.CH32V203C8.build.IQ_math_RV32=
 CH32V20x_EVT.menu.pnum.CH32V203C8.build.ch_extra_lib=-lprintf
+CH32V20x_EVT.menu.pnum.CH32V203C8.build.board_extra_flags= -DLED_BUILTIN=PA5
 
 
 # USB support
@@ -52,14 +53,14 @@ CH32V20x_EVT.menu.usb.tinyusb_usbd_usbfsh=Adafruit TinyUSB with USBD/USBFS Host
 CH32V20x_EVT.menu.usb.tinyusb_usbd_usbfsh.build.usb_flags=-DUSBCON -DUSE_TINYUSB -DCFG_TUD_WCH_USBIP_FSDEV=1 -DCFG_TUH_ENABLED=1 -DCFG_TUH_WCH_USBIP_USBFS=1 "-I{runtime.platform.path}/libraries/Adafruit_TinyUSB_Arduino/src/arduino"
 
 # Upload menu
-CH32V20x_EVT.menu.upload_method.swdMethod=WCH-SWD
-CH32V20x_EVT.menu.upload_method.swdMethod.upload.protocol=
-CH32V20x_EVT.menu.upload_method.swdMethod.upload.options=
-CH32V20x_EVT.menu.upload_method.swdMethod.upload.tool=WCH_linkE
 CH32V20x_EVT.menu.upload_method.ispMethod=WCH-ISP
 CH32V20x_EVT.menu.upload_method.ispMethod.upload.protocol=
 CH32V20x_EVT.menu.upload_method.ispMethod.upload.options=
 CH32V20x_EVT.menu.upload_method.ispMethod.upload.tool=wchisp
+CH32V20x_EVT.menu.upload_method.swdMethod=WCH-SWD
+CH32V20x_EVT.menu.upload_method.swdMethod.upload.protocol=
+CH32V20x_EVT.menu.upload_method.swdMethod.upload.options=
+CH32V20x_EVT.menu.upload_method.swdMethod.upload.tool=WCH_linkE
 
 
 # Clock Select
