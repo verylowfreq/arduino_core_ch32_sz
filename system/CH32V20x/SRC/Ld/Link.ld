@@ -1,5 +1,4 @@
 __flash_size = DEFINED(__FLASH_SIZE) ? __FLASH_SIZE : 64K;
-__total_flash_size = DEFINED(__TOTAL_FLASH_SIZE) ? __TOTAL_FLASH_SIZE : 224K;
 __ram_size = DEFINED(__RAM_SIZE) ? __RAM_SIZE : 20K;
 __stack_size = DEFINED(__STACK_SIZE) ? __STACK_SIZE : 2048;
 
@@ -20,9 +19,6 @@ MEMORY
 /**/
 	FLASH (rx) : ORIGIN = 0x00000000, LENGTH = __flash_size
 	RAM (xrw) : ORIGIN = 0x20000000, LENGTH = __ram_size
-
-	/* Non Zero Wait Flash, 224K - 64K = 160K */
-	FLASH1 (rx) : ORIGIN = __flash_size, LENGTH = __total_flash_size - __flash_size
  
   
 /* CH32V20x_D8 - CH32V203RB
@@ -72,11 +68,6 @@ SECTIONS
 		KEEP(*(SORT_NONE(.fini)))
 		. = ALIGN(4);
 	} >FLASH AT>FLASH
-
-	.data_flash1 :
-	{
-		. = ALIGN(4);
-	} AT>FLASH1
 
 	PROVIDE( _etext = . );
 	PROVIDE( _eitcm = . );	
@@ -193,6 +184,5 @@ SECTIONS
     } >RAM 
 
 }
-
 
 
