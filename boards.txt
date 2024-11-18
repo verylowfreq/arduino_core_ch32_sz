@@ -27,21 +27,21 @@ CH32V20x_EVT.debug.tool=gdb-WCH_LinkE
 
 
 #Suzuno32RV/SuzuduinoUNO Board
-CH32V20x_EVT.menu.pnum.CH32V203C8=Suzuno32RV/SuzuduinoUNO
-CH32V20x_EVT.menu.pnum.CH32V203C8.node=NODE_V203C8
-CH32V20x_EVT.menu.pnum.CH32V203C8.upload.maximum_size=65536
-CH32V20x_EVT.menu.pnum.CH32V203C8.upload.maximum_data_size=20480
-CH32V20x_EVT.menu.pnum.CH32V203C8.build.mcu=QingKe-V4B
-CH32V20x_EVT.menu.pnum.CH32V203C8.build.board=CH32V203C8
-CH32V20x_EVT.menu.pnum.CH32V203C8.build.series=CH32V20x
-CH32V20x_EVT.menu.pnum.CH32V203C8.build.variant=CH32V20x/CH32V203C8
-CH32V20x_EVT.menu.pnum.CH32V203C8.build.chip=CH32V203
-CH32V20x_EVT.menu.pnum.CH32V203C8.build.march=rv32imacxw
-CH32V20x_EVT.menu.pnum.CH32V203C8.build.mabi=ilp32
-CH32V20x_EVT.menu.pnum.CH32V203C8.build.math_lib_gcc=-lm
-CH32V20x_EVT.menu.pnum.CH32V203C8.build.IQ_math_RV32=
-CH32V20x_EVT.menu.pnum.CH32V203C8.build.ch_extra_lib=-lprintf
-CH32V20x_EVT.menu.pnum.CH32V203C8.build.board_extra_flags=-DLED_BUILTIN=PA5
+CH32V20x_EVT.menu.pnum.CH32V203C8_Suzuno32RV=Suzuno32RV/SuzuduinoUNO
+CH32V20x_EVT.menu.pnum.CH32V203C8_Suzuno32RV.node=NODE_V203C8_Suzuno32RV
+CH32V20x_EVT.menu.pnum.CH32V203C8_Suzuno32RV.upload.maximum_size=229376
+CH32V20x_EVT.menu.pnum.CH32V203C8_Suzuno32RV.upload.maximum_data_size=20480
+CH32V20x_EVT.menu.pnum.CH32V203C8_Suzuno32RV.build.mcu=QingKe-V4B
+CH32V20x_EVT.menu.pnum.CH32V203C8_Suzuno32RV.build.board=CH32V203C8_Suzuno32RV
+CH32V20x_EVT.menu.pnum.CH32V203C8_Suzuno32RV.build.series=CH32V20x
+CH32V20x_EVT.menu.pnum.CH32V203C8_Suzuno32RV.build.variant=CH32V20x/CH32V203C8_Suzuno32RV
+CH32V20x_EVT.menu.pnum.CH32V203C8_Suzuno32RV.build.chip=CH32V203
+CH32V20x_EVT.menu.pnum.CH32V203C8_Suzuno32RV.build.march=rv32imacxw
+CH32V20x_EVT.menu.pnum.CH32V203C8_Suzuno32RV.build.mabi=ilp32
+CH32V20x_EVT.menu.pnum.CH32V203C8_Suzuno32RV.build.math_lib_gcc=-lm
+CH32V20x_EVT.menu.pnum.CH32V203C8_Suzuno32RV.build.IQ_math_RV32=
+CH32V20x_EVT.menu.pnum.CH32V203C8_Suzuno32RV.build.ch_extra_lib=-lprintf
+CH32V20x_EVT.menu.pnum.CH32V203C8_Suzuno32RV.build.board_extra_flags=
 
 
 # USB support
