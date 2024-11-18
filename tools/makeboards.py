@@ -165,6 +165,7 @@ def build_pnum(series, values):
         print(f'{menu}.build.math_lib_gcc=-lm')
         print(f'{menu}.build.IQ_math_RV32=')
         print(f'{menu}.build.ch_extra_lib={(mcu_list[mcu]["ch_extra_lib"]) or ""}')
+        print(f'{menu}.build.board_extra_flags={(pv["buildflags"]) if "buildflags" in pv else ""}')
         print()
 
 
