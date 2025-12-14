@@ -48,7 +48,20 @@ const PinName digitalPin[] = {
   // D22-D24 Additional Pins
   PC_13,
   PC_14,
-  PC_15
+  PC_15,
+
+  PB_6,
+  PB_7,
+
+  PD_0,
+  PD_1,
+
+  PA_11,
+  PA_12,
+
+  PB_13,
+  PB_14,
+  PB_15
 };
 
 

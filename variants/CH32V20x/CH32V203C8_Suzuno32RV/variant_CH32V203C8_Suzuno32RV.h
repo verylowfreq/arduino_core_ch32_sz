@@ -30,8 +30,8 @@
 #define PA8                     2
 #define PA9                     1
 #define PA10                    0
-#define PA11                    PNUM_NOT_DEFINED
-#define PA12                    PNUM_NOT_DEFINED
+// #define PA11                    PNUM_NOT_DEFINED
+// #define PA12                    PNUM_NOT_DEFINED
 #define PA13                    PNUM_NOT_DEFINED
 #define PA14                    PNUM_NOT_DEFINED
 #define PA15                    4
@@ -41,21 +41,23 @@
 #define PB3                     5
 #define PB4                     6
 #define PB5                     7
-#define PB6                     PNUM_NOT_DEFINED
-#define PB7                     PNUM_NOT_DEFINED
+#define PB6                     25
+#define PB7                     26
 #define PB8                     15
 #define PB9                     14
 #define PB10                    9
 #define PB11                    8
 #define PB12                    3
-#define PB13                    PNUM_NOT_DEFINED
-#define PB14                    PNUM_NOT_DEFINED
-#define PB15                    PNUM_NOT_DEFINED
+#define PB13                    31
+#define PB14                    32
+#define PB15                    33
 #define PC13                    22
 #define PC14                    23
 #define PC15                    24
-#define PD0                     PNUM_NOT_DEFINED
-#define PD1                     PNUM_NOT_DEFINED
+#define PD0                     27
+#define PD1                     28
+#define PA11                    29
+#define PA12                    30
 
 
 // Alternate pins number
