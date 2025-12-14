@@ -48,9 +48,9 @@ CH32V20x_EVT.menu.pnum.CH32V203C8_Suzuno32RV.build.board_extra_flags=
 CH32V20x_EVT.menu.usb.none=None
 CH32V20x_EVT.menu.usb.none.build.usb_flags=
 CH32V20x_EVT.menu.usb.tinyusb_usbd=Adafruit TinyUSB with USBD
-CH32V20x_EVT.menu.usb.tinyusb_usbd.build.usb_flags=-DUSBCON -DUSE_TINYUSB -DCFG_TUD_WCH_USBIP_FSDEV=1 "-I{runtime.platform.path}/libraries/Adafruit_TinyUSB_Arduino/src/arduino"
+CH32V20x_EVT.menu.usb.tinyusb_usbd.build.usb_flags=-DUSBCON -DUSE_TINYUSB -DCFG_TUD_ENABLED=1 -DCFG_TUD_WCH_USBIP_FSDEV=1 "-I{runtime.platform.path}/libraries/Adafruit_TinyUSB_Arduino/src/arduino"
 CH32V20x_EVT.menu.usb.tinyusb_usbd_usbfsh=Adafruit TinyUSB with USBD/USBFS Host
-CH32V20x_EVT.menu.usb.tinyusb_usbd_usbfsh.build.usb_flags=-DUSBCON -DUSE_TINYUSB -DCFG_TUD_WCH_USBIP_FSDEV=1 -DCFG_TUH_ENABLED=1 -DCFG_TUH_WCH_USBIP_USBFS=1 "-I{runtime.platform.path}/libraries/Adafruit_TinyUSB_Arduino/src/arduino"
+CH32V20x_EVT.menu.usb.tinyusb_usbd_usbfsh.build.usb_flags=-DUSBCON -DUSE_TINYUSB -DCFG_TUD_ENABLED=1 -DCFG_TUD_WCH_USBIP_FSDEV=1 -DCFG_TUH_ENABLED=1 -DCFG_TUH_WCH_USBIP_USBFS=1 "-I{runtime.platform.path}/libraries/Adafruit_TinyUSB_Arduino/src/arduino"
 
 # Upload menu
 CH32V20x_EVT.menu.upload_method.ispMethod=WCH-ISP
