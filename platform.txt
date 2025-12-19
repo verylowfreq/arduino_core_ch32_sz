@@ -105,6 +105,8 @@ build.flags.optimize=
 build.flags.debug=
 build.flags.ldspecs=
 build.flash_offset=0
+build.flash_base=0x08000000
+build.uf2_family=
 
 # Pre and post build hooks
 ##build.opt.name=build_opt.h
@@ -168,9 +170,14 @@ tools.WCH_linkE.upload.params.verbose=
 tools.WCH_linkE.upload.params.quiet=
 tools.WCH_linkE.upload.config={runtime.tools.openocd.path}/bin/wch-riscv.cfg
 tools.WCH_linkE.upload.pattern="{path}{cmd}" -f "{upload.config}" -c init -c halt -c "program {{build.path}/{build.project_name}.elf} verify; wlink_reset_resume; exit;"
+tools.WCH_linkE.bootloader.params.verbose=
+tools.WCH_linkE.bootloader.params.quiet=
+tools.WCH_linkE.bootloader.pattern="{path}{cmd}" -f "{upload.config}" -c init -c halt -c "program {{bootloader.file}} {bootloader.address} verify; wlink_reset_resume; exit;"
 
 #tools.WCH_linkE.upload.pattern="{path}{cmd}" -f {upload.config} -c init -c halt -c "program {{build.path}/{build.project_name}.elf}; verify_image {{build.path}/{build.project_name}.elf}; wlink_reset_resume;  exit;"
 
+tools.WCH_linkE.erase.pattern=
+tools.WCH_linkE.bootloader.tool.serial=
 
 ## WCH-ISP
 tools.wchisp.path={runtime.tools.wchisp.path}/
@@ -178,7 +185,19 @@ tools.wchisp.cmd=wchisp
 tools.wchisp.upload.params.verbose=
 tools.wchisp.upload.params.quiet=
 tools.wchisp.upload.pattern="{path}{cmd}" {upload.verbose} flash "{build.path}/{build.project_name}.elf"
+tools.wchisp.bootloader.params.verbose=
+tools.wchisp.bootloader.params.quiet=
+tools.wchisp.bootloader.pattern="{path}{cmd}" {bootloader.verbose} flash "{bootloader.file}"
+tools.wchisp.erase.pattern=
+tools.wchisp.bootloader.tool.serial=
 
+## HID bootloader
+tools.hidbootloader.path={runtime.platform.path}/tools/
+tools.hidbootloader.cmd=hidupload
+tools.hidbootloader.upload.params.verbose=
+tools.hidbootloader.upload.params.quiet=
+tools.hidbootloader.upload.pattern="{path}{cmd}" --bin "{build.path}/{build.project_name}.bin" --address "{build.flash_base}" --offset "{build.flash_offset}" --erase --verify
+tools.hidbootloader.tool.serial=
 
 # Debugger configuration (general options)
 # ----------------------------------------

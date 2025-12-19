@@ -42,7 +42,8 @@ CH32V20x_EVT.menu.pnum.CH32V203C8_Suzuno32RV.build.math_lib_gcc=-lm
 CH32V20x_EVT.menu.pnum.CH32V203C8_Suzuno32RV.build.IQ_math_RV32=
 CH32V20x_EVT.menu.pnum.CH32V203C8_Suzuno32RV.build.ch_extra_lib=-lprintf
 CH32V20x_EVT.menu.pnum.CH32V203C8_Suzuno32RV.build.board_extra_flags=
-
+CH32V20x_EVT.menu.pnum.CH32V203C8_Suzuno32RV.bootloader.file={runtime.platform.path}/bootloader/hidbootloader-v0.1.0.bin
+CH32V20x_EVT.menu.pnum.CH32V203C8_Suzuno32RV.bootloader.address=0x08000000
 
 # USB support
 CH32V20x_EVT.menu.usb.none=None
@@ -57,11 +58,20 @@ CH32V20x_EVT.menu.upload_method.ispMethod=WCH-ISP
 CH32V20x_EVT.menu.upload_method.ispMethod.upload.protocol=
 CH32V20x_EVT.menu.upload_method.ispMethod.upload.options=
 CH32V20x_EVT.menu.upload_method.ispMethod.upload.tool=wchisp
+CH32V20x_EVT.menu.upload_method.ispMethod.bootloader.tool=wchisp
 CH32V20x_EVT.menu.upload_method.swdMethod=WCH-SWD
 CH32V20x_EVT.menu.upload_method.swdMethod.upload.protocol=
 CH32V20x_EVT.menu.upload_method.swdMethod.upload.options=
 CH32V20x_EVT.menu.upload_method.swdMethod.upload.tool=WCH_linkE
-
+CH32V20x_EVT.menu.upload_method.swdMethod.bootloader.tool=WCH_linkE
+CH32V20x_EVT.menu.upload_method.hidmethod=HID Bootloader
+CH32V20x_EVT.menu.upload_method.hidmethod.upload.protocol=
+CH32V20x_EVT.menu.upload_method.hidmethod.upload.options=
+CH32V20x_EVT.menu.upload_method.hidmethod.upload.tool=hidbootloader
+CH32V20x_EVT.menu.upload_method.hidmethod.build.ldscript=Link_bootloader.ld
+CH32V20x_EVT.menu.upload_method.hidmethod.build.flash_base=0x08000000
+CH32V20x_EVT.menu.upload_method.hidmethod.build.flash_offset=0x00004000
+CH32V20x_EVT.menu.upload_method.hidmethod.build.family_id=0x699b62ec
 
 # Clock Select
 CH32V20x_EVT.menu.clock.144MHz_HSI=144MHz Internal
@@ -139,4 +149,3 @@ CH32V20x_EVT.menu.rtlib.nanofps=Newlib Nano + Float Printf/Scanf
 CH32V20x_EVT.menu.rtlib.nanofps.build.flags.ldflags=--specs=nano.specs --specs=nosys.specs -u _printf_float -u _scanf_float
 CH32V20x_EVT.menu.rtlib.full=Newlib Standard
 CH32V20x_EVT.menu.rtlib.full.build.flags.ldflags=--specs=nosys.specs
-

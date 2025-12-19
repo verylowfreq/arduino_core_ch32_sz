@@ -1,0 +1,13 @@
+# Programmer definitions for Bootloader/Burn using Arduino IDE menu.
+
+wch_linke.name=WCH-LinkE (SWD)
+wch_linke.communication=usb
+wch_linke.program.protocol=
+wch_linke.program.tool=WCH_linkE
+wch_linke.program.extra_params=
+
+wchisp.name=WCH-ISP
+wchisp.communication=usb
+wchisp.program.protocol=
+wchisp.program.tool=wchisp
+wchisp.program.extra_params=
