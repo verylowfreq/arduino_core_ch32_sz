@@ -40,12 +40,12 @@
 //#define CR_PER_Reset               ((uint32_t)0xFFFFFFFD)
 //#define CR_MER_Set                 ((uint32_t)0x00000004)
 //#define CR_MER_Reset               ((uint32_t)0xFFFFFFFB)
-#define CR_OPTPG_Set               ((uint32_t)0x00000010)
-#define CR_OPTPG_Reset             ((uint32_t)0xFFFFFFEF)
-#define CR_OPTER_Set               ((uint32_t)0x00000020)
-#define CR_OPTER_Reset             ((uint32_t)0xFFFFFFDF)
-#define CR_STRT_Set                ((uint32_t)0x00000040)
-#define CR_LOCK_Set                ((uint32_t)0x00000080)
+// #define CR_OPTPG_Set               ((uint32_t)0x00000010)
+// #define CR_OPTPG_Reset             ((uint32_t)0xFFFFFFEF)
+// #define CR_OPTER_Set               ((uint32_t)0x00000020)
+// #define CR_OPTER_Reset             ((uint32_t)0xFFFFFFDF)
+// #define CR_STRT_Set                ((uint32_t)0x00000040)
+// #define CR_LOCK_Set                ((uint32_t)0x00000080)
 //#define CR_PAGE_PG                 ((uint32_t)0x00010000)
 //#define CR_PAGE_ER                 ((uint32_t)0x00020000)
 //#define CR_BUF_LOAD                ((uint32_t)0x00040000)
@@ -53,8 +53,8 @@
 
 /* FLASH Keys */
 //#define RDP_Key                    ((uint16_t)0x00A5)
-#define FLASH_KEY1                 ((uint32_t)0x45670123)
-#define FLASH_KEY2                 ((uint32_t)0xCDEF89AB)
+// #define FLASH_KEY1                 ((uint32_t)0x45670123)
+// #define FLASH_KEY2                 ((uint32_t)0xCDEF89AB)
 
 
 class EEPROMClass {
@@ -66,10 +66,10 @@ class EEPROMClass {
 
     uint8_t * getDataPtr();
     uint8_t const * getConstDataPtr() const;
-    uint32_t ReadOptionBytes(void);   // return data0 and data1 option bytes including their inversed values
 
     uint8_t read( int const idx );
     void write( int const idx, uint8_t const val);     // requires commit() to make data stick
+    void update(int const idx, uint8_t const val) { write(idx, val); }
     void erase(void);     // requires commit() to make data stick
 
     bool commit(void);
