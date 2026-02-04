@@ -42,7 +42,7 @@ CH32V20x_EVT.menu.pnum.CH32V203C8_Suzuno32RV.build.math_lib_gcc=-lm
 CH32V20x_EVT.menu.pnum.CH32V203C8_Suzuno32RV.build.IQ_math_RV32=
 CH32V20x_EVT.menu.pnum.CH32V203C8_Suzuno32RV.build.ch_extra_lib=-lprintf
 CH32V20x_EVT.menu.pnum.CH32V203C8_Suzuno32RV.build.board_extra_flags=
-CH32V20x_EVT.menu.pnum.CH32V203C8_Suzuno32RV.bootloader.file={runtime.platform.path}/bootloader/hidbootloader-v0.1.0.bin
+CH32V20x_EVT.menu.pnum.CH32V203C8_Suzuno32RV.bootloader.file={runtime.platform.path}/bootloader/hidbootloader-v0.2.0.hex
 CH32V20x_EVT.menu.pnum.CH32V203C8_Suzuno32RV.bootloader.address=0x08000000
 
 # USB support
