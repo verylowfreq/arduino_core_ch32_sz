@@ -1,3 +1,6 @@
 [submodule "libraries/Adafruit_TinyUSB_Arduino"]
 	path = libraries/Adafruit_TinyUSB_Arduino
 	url = https://github.com/verylowfreq/Adafruit_TinyUSB_Arduino.git
+[submodule "libraries/TinyUSB_Mouse_and_Keyboard"]
+	path = libraries/TinyUSB_Mouse_and_Keyboard
+	url = git@github.com:verylowfreq/TinyUSB_Mouse_and_Keyboard.git
