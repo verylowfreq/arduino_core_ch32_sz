@@ -1,6 +1,5 @@
 # See: https://arduino.github.io/arduino-cli/latest/platform-specification/
 
-menu.pnum=Board Select
 menu.clock=Clock Select
 menu.xserial=U(S)ART support
 menu.usb=USB support (if available)
@@ -15,137 +14,395 @@ menu.upload_method=Upload method
 
 
 ##############################################################################
-##CH32V20x_EVT Board   
+##Suzuno32RV Board
 
-CH32V20x_EVT.name=CH32V20x
-CH32V20x_EVT.build.core=arduino
-CH32V20x_EVT.build.board=CH32V20x_EVT
-CH32V20x_EVT.upload.maximum_size=0
-CH32V20x_EVT.upload.maximum_data_size=0
-CH32V20x_EVT.build.variant_h=variant_{build.board}.h
-CH32V20x_EVT.debug.tool=gdb-WCH_LinkE
+suzuno32rv.name=Suzuno32RV
+suzuno32rv.build.core=arduino
+suzuno32rv.build.board=SUZUNO32RV
+suzuno32rv.upload.maximum_size=229376
+suzuno32rv.upload.maximum_data_size=20480
+suzuno32rv.build.variant=CH32V20x/SUZUNO32RV
+suzuno32rv.build.variant_h=variant_SUZUNO32RV.h
+suzuno32rv.build.series=CH32V20x
+suzuno32rv.build.mcu=QingKe-V4B
+suzuno32rv.build.chip=CH32V203
+suzuno32rv.build.march=rv32imacxw
+suzuno32rv.build.mabi=ilp32
+suzuno32rv.build.math_lib_gcc=-lm
+suzuno32rv.build.IQ_math_RV32=
+suzuno32rv.build.ch_extra_lib=-lprintf
+suzuno32rv.build.board_extra_flags=
+suzuno32rv.debug.tool=gdb-WCH_LinkE
+suzuno32rv.bootloader.file={runtime.platform.path}/bootloader/hidbootloader-v0.2.1.hex
+suzuno32rv.bootloader.address=0x08000000
 
-
-#Suzuno32RV/SuzuduinoUNO Board
-CH32V20x_EVT.menu.pnum.CH32V203C8_Suzuno32RV=Suzuno32RV/SuzuduinoUNO
-CH32V20x_EVT.menu.pnum.CH32V203C8_Suzuno32RV.node=NODE_V203C8_Suzuno32RV
-CH32V20x_EVT.menu.pnum.CH32V203C8_Suzuno32RV.upload.maximum_size=229376
-CH32V20x_EVT.menu.pnum.CH32V203C8_Suzuno32RV.upload.maximum_data_size=20480
-CH32V20x_EVT.menu.pnum.CH32V203C8_Suzuno32RV.build.mcu=QingKe-V4B
-CH32V20x_EVT.menu.pnum.CH32V203C8_Suzuno32RV.build.board=CH32V203C8_Suzuno32RV
-CH32V20x_EVT.menu.pnum.CH32V203C8_Suzuno32RV.build.series=CH32V20x
-CH32V20x_EVT.menu.pnum.CH32V203C8_Suzuno32RV.build.variant=CH32V20x/CH32V203C8_Suzuno32RV
-CH32V20x_EVT.menu.pnum.CH32V203C8_Suzuno32RV.build.chip=CH32V203
-CH32V20x_EVT.menu.pnum.CH32V203C8_Suzuno32RV.build.march=rv32imacxw
-CH32V20x_EVT.menu.pnum.CH32V203C8_Suzuno32RV.build.mabi=ilp32
-CH32V20x_EVT.menu.pnum.CH32V203C8_Suzuno32RV.build.math_lib_gcc=-lm
-CH32V20x_EVT.menu.pnum.CH32V203C8_Suzuno32RV.build.IQ_math_RV32=
-CH32V20x_EVT.menu.pnum.CH32V203C8_Suzuno32RV.build.ch_extra_lib=-lprintf
-CH32V20x_EVT.menu.pnum.CH32V203C8_Suzuno32RV.build.board_extra_flags=
-CH32V20x_EVT.menu.pnum.CH32V203C8_Suzuno32RV.bootloader.file={runtime.platform.path}/bootloader/hidbootloader-v0.2.1.hex
-CH32V20x_EVT.menu.pnum.CH32V203C8_Suzuno32RV.bootloader.address=0x08000000
 
 # USB support
-CH32V20x_EVT.menu.usb.none=None
-CH32V20x_EVT.menu.usb.none.build.usb_flags=
-CH32V20x_EVT.menu.usb.tinyusb_usbd=Adafruit TinyUSB with USBD
-CH32V20x_EVT.menu.usb.tinyusb_usbd.build.usb_flags=-DUSBCON -DUSE_TINYUSB -DCFG_TUD_ENABLED=1 -DCFG_TUD_WCH_USBIP_FSDEV=1 "-I{runtime.platform.path}/libraries/Adafruit_TinyUSB_Arduino/src/arduino"
-CH32V20x_EVT.menu.usb.tinyusb_usbd_usbfsh=Adafruit TinyUSB with USBD/USBFS Host
-CH32V20x_EVT.menu.usb.tinyusb_usbd_usbfsh.build.usb_flags=-DUSBCON -DUSE_TINYUSB -DCFG_TUD_ENABLED=1 -DCFG_TUD_WCH_USBIP_FSDEV=1 -DCFG_TUH_ENABLED=1 -DCFG_TUH_WCH_USBIP_USBFS=1 "-I{runtime.platform.path}/libraries/Adafruit_TinyUSB_Arduino/src/arduino"
+suzuno32rv.menu.usb.none=None
+suzuno32rv.menu.usb.none.build.usb_flags=
+suzuno32rv.menu.usb.tinyusb_usbd=Adafruit TinyUSB with USBD
+suzuno32rv.menu.usb.tinyusb_usbd.build.usb_flags=-DUSBCON -DUSE_TINYUSB -DCFG_TUD_ENABLED=1 -DCFG_TUD_WCH_USBIP_FSDEV=1 "-I{runtime.platform.path}/libraries/Adafruit_TinyUSB_Arduino/src/arduino"
+suzuno32rv.menu.usb.tinyusb_usbd_usbfsh=Adafruit TinyUSB with USBD/USBFS Host
+suzuno32rv.menu.usb.tinyusb_usbd_usbfsh.build.usb_flags=-DUSBCON -DUSE_TINYUSB -DCFG_TUD_ENABLED=1 -DCFG_TUD_WCH_USBIP_FSDEV=1 -DCFG_TUH_ENABLED=1 -DCFG_TUH_WCH_USBIP_USBFS=1 "-I{runtime.platform.path}/libraries/Adafruit_TinyUSB_Arduino/src/arduino"
 
 # Upload menu
-CH32V20x_EVT.menu.upload_method.ispMethod=WCH-ISP
-CH32V20x_EVT.menu.upload_method.ispMethod.upload.protocol=
-CH32V20x_EVT.menu.upload_method.ispMethod.upload.options=
-CH32V20x_EVT.menu.upload_method.ispMethod.upload.tool=wchisp
-CH32V20x_EVT.menu.upload_method.ispMethod.bootloader.tool=wchisp
-CH32V20x_EVT.menu.upload_method.swdMethod=WCH-SWD
-CH32V20x_EVT.menu.upload_method.swdMethod.upload.protocol=
-CH32V20x_EVT.menu.upload_method.swdMethod.upload.options=
-CH32V20x_EVT.menu.upload_method.swdMethod.upload.tool=WCH_linkE
-CH32V20x_EVT.menu.upload_method.swdMethod.bootloader.tool=WCH_linkE
-CH32V20x_EVT.menu.upload_method.hidmethod=HID Bootloader
-CH32V20x_EVT.menu.upload_method.hidmethod.upload.protocol=
-CH32V20x_EVT.menu.upload_method.hidmethod.upload.options=
-CH32V20x_EVT.menu.upload_method.hidmethod.upload.tool=hidbootloader
-CH32V20x_EVT.menu.upload_method.hidmethod.build.ldscript=Link_bootloader.ld
-CH32V20x_EVT.menu.upload_method.hidmethod.build.flash_base=0x08000000
-CH32V20x_EVT.menu.upload_method.hidmethod.build.flash_offset=0x00004000
-CH32V20x_EVT.menu.upload_method.hidmethod.build.family_id=0x699b62ec
+suzuno32rv.menu.upload_method.ispMethod=WCH-ISP
+suzuno32rv.menu.upload_method.ispMethod.upload.protocol=
+suzuno32rv.menu.upload_method.ispMethod.upload.options=
+suzuno32rv.menu.upload_method.ispMethod.upload.tool=wchisp
+suzuno32rv.menu.upload_method.ispMethod.bootloader.tool=wchisp
+suzuno32rv.menu.upload_method.swdMethod=WCH-SWD
+suzuno32rv.menu.upload_method.swdMethod.upload.protocol=
+suzuno32rv.menu.upload_method.swdMethod.upload.options=
+suzuno32rv.menu.upload_method.swdMethod.upload.tool=WCH_linkE
+suzuno32rv.menu.upload_method.swdMethod.bootloader.tool=WCH_linkE
+suzuno32rv.menu.upload_method.hidmethod=HID Bootloader
+suzuno32rv.menu.upload_method.hidmethod.upload.protocol=
+suzuno32rv.menu.upload_method.hidmethod.upload.options=
+suzuno32rv.menu.upload_method.hidmethod.upload.tool=hidbootloader
+suzuno32rv.menu.upload_method.hidmethod.build.ldscript=Link_bootloader.ld
+suzuno32rv.menu.upload_method.hidmethod.build.flash_base=0x08000000
+suzuno32rv.menu.upload_method.hidmethod.build.flash_offset=0x00004000
+suzuno32rv.menu.upload_method.hidmethod.build.family_id=0x699b62ec
 
 # Clock Select
-CH32V20x_EVT.menu.clock.144MHz_HSI=144MHz Internal
-CH32V20x_EVT.menu.clock.144MHz_HSI.build.flags.clock=-DSYSCLK_FREQ_144MHz_HSI=144000000 -DF_CPU=144000000
-CH32V20x_EVT.menu.clock.120MHz_HSI=120MHz Internal
-CH32V20x_EVT.menu.clock.120MHz_HSI.build.flags.clock=-DSYSCLK_FREQ_120MHz_HSI=120000000 -DF_CPU=120000000
-CH32V20x_EVT.menu.clock.96MHz_HSI=96MHz Internal
-CH32V20x_EVT.menu.clock.96MHz_HSI.build.flags.clock=-DSYSCLK_FREQ_96MHz_HSI=96000000 -DF_CPU=96000000
-CH32V20x_EVT.menu.clock.72MHz_HSI=72MHz Internal
-CH32V20x_EVT.menu.clock.72MHz_HSI.build.flags.clock=-DSYSCLK_FREQ_72MHz_HSI=72000000 -DF_CPU=72000000
-CH32V20x_EVT.menu.clock.56MHz_HSI=56MHz Internal
-CH32V20x_EVT.menu.clock.56MHz_HSI.build.flags.clock=-DSYSCLK_FREQ_56MHz_HSI=56000000 -DF_CPU=56000000
-CH32V20x_EVT.menu.clock.48MHz_HSI=48MHz Internal
-CH32V20x_EVT.menu.clock.48MHz_HSI.build.flags.clock=-DSYSCLK_FREQ_48MHz_HSI=48000000 -DF_CPU=48000000
-CH32V20x_EVT.menu.clock.HSI=HSI Internal
-CH32V20x_EVT.menu.clock.HSI.build.flags.clock=-DSYSCLK_FREQ_HSI=HSI_VALUE -DF_CPU=HSI_VALUE
-CH32V20x_EVT.menu.clock.144MHz_HSE=144MHz External
-CH32V20x_EVT.menu.clock.144MHz_HSE.build.flags.clock=-DSYSCLK_FREQ_144MHz_HSE=144000000 -DF_CPU=144000000
-CH32V20x_EVT.menu.clock.120MHz_HSE=120MHz External
-CH32V20x_EVT.menu.clock.120MHz_HSE.build.flags.clock=-DSYSCLK_FREQ_120MHz_HSE=120000000 -DF_CPU=120000000
-CH32V20x_EVT.menu.clock.96MHz_HSE=96MHz External
-CH32V20x_EVT.menu.clock.96MHz_HSE.build.flags.clock=-DSYSCLK_FREQ_96MHz_HSE=96000000 -DF_CPU=96000000
-CH32V20x_EVT.menu.clock.72MHz_HSE=72MHz External
-CH32V20x_EVT.menu.clock.72MHz_HSE.build.flags.clock=-DSYSCLK_FREQ_72MHz_HSE=72000000 -DF_CPU=72000000
-CH32V20x_EVT.menu.clock.56MHz_HSE=56MHz External
-CH32V20x_EVT.menu.clock.56MHz_HSE.build.flags.clock=-DSYSCLK_FREQ_56MHz_HSE=56000000 -DF_CPU=56000000
-CH32V20x_EVT.menu.clock.48MHz_HSE=48MHz External
-CH32V20x_EVT.menu.clock.48MHz_HSE.build.flags.clock=-DSYSCLK_FREQ_48MHz_HSE=48000000 -DF_CPU=48000000
-CH32V20x_EVT.menu.clock.HSE=HSE External
-CH32V20x_EVT.menu.clock.HSE.build.flags.clock=-DSYSCLK_FREQ_HSE=HSE_VALUE -DF_CPU=HSE_VALUE
+suzuno32rv.menu.clock.144MHz_HSI=144MHz Internal
+suzuno32rv.menu.clock.144MHz_HSI.build.flags.clock=-DSYSCLK_FREQ_144MHz_HSI=144000000 -DF_CPU=144000000
+suzuno32rv.menu.clock.120MHz_HSI=120MHz Internal
+suzuno32rv.menu.clock.120MHz_HSI.build.flags.clock=-DSYSCLK_FREQ_120MHz_HSI=120000000 -DF_CPU=120000000
+suzuno32rv.menu.clock.96MHz_HSI=96MHz Internal
+suzuno32rv.menu.clock.96MHz_HSI.build.flags.clock=-DSYSCLK_FREQ_96MHz_HSI=96000000 -DF_CPU=96000000
+suzuno32rv.menu.clock.72MHz_HSI=72MHz Internal
+suzuno32rv.menu.clock.72MHz_HSI.build.flags.clock=-DSYSCLK_FREQ_72MHz_HSI=72000000 -DF_CPU=72000000
+suzuno32rv.menu.clock.56MHz_HSI=56MHz Internal
+suzuno32rv.menu.clock.56MHz_HSI.build.flags.clock=-DSYSCLK_FREQ_56MHz_HSI=56000000 -DF_CPU=56000000
+suzuno32rv.menu.clock.48MHz_HSI=48MHz Internal
+suzuno32rv.menu.clock.48MHz_HSI.build.flags.clock=-DSYSCLK_FREQ_48MHz_HSI=48000000 -DF_CPU=48000000
+suzuno32rv.menu.clock.HSI=HSI Internal
+suzuno32rv.menu.clock.HSI.build.flags.clock=-DSYSCLK_FREQ_HSI=HSI_VALUE -DF_CPU=HSI_VALUE
+suzuno32rv.menu.clock.144MHz_HSE=144MHz External
+suzuno32rv.menu.clock.144MHz_HSE.build.flags.clock=-DSYSCLK_FREQ_144MHz_HSE=144000000 -DF_CPU=144000000
+suzuno32rv.menu.clock.120MHz_HSE=120MHz External
+suzuno32rv.menu.clock.120MHz_HSE.build.flags.clock=-DSYSCLK_FREQ_120MHz_HSE=120000000 -DF_CPU=120000000
+suzuno32rv.menu.clock.96MHz_HSE=96MHz External
+suzuno32rv.menu.clock.96MHz_HSE.build.flags.clock=-DSYSCLK_FREQ_96MHz_HSE=96000000 -DF_CPU=96000000
+suzuno32rv.menu.clock.72MHz_HSE=72MHz External
+suzuno32rv.menu.clock.72MHz_HSE.build.flags.clock=-DSYSCLK_FREQ_72MHz_HSE=72000000 -DF_CPU=72000000
+suzuno32rv.menu.clock.56MHz_HSE=56MHz External
+suzuno32rv.menu.clock.56MHz_HSE.build.flags.clock=-DSYSCLK_FREQ_56MHz_HSE=56000000 -DF_CPU=56000000
+suzuno32rv.menu.clock.48MHz_HSE=48MHz External
+suzuno32rv.menu.clock.48MHz_HSE.build.flags.clock=-DSYSCLK_FREQ_48MHz_HSE=48000000 -DF_CPU=48000000
+suzuno32rv.menu.clock.HSE=HSE External
+suzuno32rv.menu.clock.HSE.build.flags.clock=-DSYSCLK_FREQ_HSE=HSE_VALUE -DF_CPU=HSE_VALUE
 
 
 # Optimizations
-CH32V20x_EVT.menu.opt.osstd=Smallest (-Os default)
-CH32V20x_EVT.menu.opt.osstd.build.flags.optimize=-Os
-CH32V20x_EVT.menu.opt.oslto=Smallest (-Os) with LTO
-CH32V20x_EVT.menu.opt.oslto.build.flags.optimize=-Os -flto
-CH32V20x_EVT.menu.opt.o1std=Fast (-O1)
-CH32V20x_EVT.menu.opt.o1std.build.flags.optimize=-O1
-CH32V20x_EVT.menu.opt.o1lto=Fast (-O1) with LTO
-CH32V20x_EVT.menu.opt.o1lto.build.flags.optimize=-O1 -flto
-CH32V20x_EVT.menu.opt.o2std=Faster (-O2)
-CH32V20x_EVT.menu.opt.o2std.build.flags.optimize=-O2
-CH32V20x_EVT.menu.opt.o2lto=Faster (-O2) with LTO
-CH32V20x_EVT.menu.opt.o2lto.build.flags.optimize=-O2 -flto
-CH32V20x_EVT.menu.opt.o3std=Fastest (-O3)
-CH32V20x_EVT.menu.opt.o3std.build.flags.optimize=-O3
-CH32V20x_EVT.menu.opt.o3lto=Fastest (-O3) with LTO
-CH32V20x_EVT.menu.opt.o3lto.build.flags.optimize=-O3 -flto
-CH32V20x_EVT.menu.opt.ogstd=Debug (-Og)
-CH32V20x_EVT.menu.opt.ogstd.build.flags.optimize=-Og
-CH32V20x_EVT.menu.opt.o0std=No Optimization (-O0)
-CH32V20x_EVT.menu.opt.o0std.build.flags.optimize=-O0
+suzuno32rv.menu.opt.osstd=Smallest (-Os default)
+suzuno32rv.menu.opt.osstd.build.flags.optimize=-Os
+suzuno32rv.menu.opt.oslto=Smallest (-Os) with LTO
+suzuno32rv.menu.opt.oslto.build.flags.optimize=-Os -flto
+suzuno32rv.menu.opt.o1std=Fast (-O1)
+suzuno32rv.menu.opt.o1std.build.flags.optimize=-O1
+suzuno32rv.menu.opt.o1lto=Fast (-O1) with LTO
+suzuno32rv.menu.opt.o1lto.build.flags.optimize=-O1 -flto
+suzuno32rv.menu.opt.o2std=Faster (-O2)
+suzuno32rv.menu.opt.o2std.build.flags.optimize=-O2
+suzuno32rv.menu.opt.o2lto=Faster (-O2) with LTO
+suzuno32rv.menu.opt.o2lto.build.flags.optimize=-O2 -flto
+suzuno32rv.menu.opt.o3std=Fastest (-O3)
+suzuno32rv.menu.opt.o3std.build.flags.optimize=-O3
+suzuno32rv.menu.opt.o3lto=Fastest (-O3) with LTO
+suzuno32rv.menu.opt.o3lto.build.flags.optimize=-O3 -flto
+suzuno32rv.menu.opt.ogstd=Debug (-Og)
+suzuno32rv.menu.opt.ogstd.build.flags.optimize=-Og
+suzuno32rv.menu.opt.o0std=No Optimization (-O0)
+suzuno32rv.menu.opt.o0std.build.flags.optimize=-O0
 
 
 # Debug information
-CH32V20x_EVT.menu.dbg.none=None
-CH32V20x_EVT.menu.dbg.none.build.flags.debug=-DNDEBUG
-CH32V20x_EVT.menu.dbg.enable_sym=Symbols Enabled (-g)
-CH32V20x_EVT.menu.dbg.enable_sym.build.flags.debug=-g -DNDEBUG
-CH32V20x_EVT.menu.dbg.enable_log=Core logs Enabled
-CH32V20x_EVT.menu.dbg.enable_log.build.flags.debug=
-CH32V20x_EVT.menu.dbg.enable_all=Core Logs and Symbols Enabled (-g)
-CH32V20x_EVT.menu.dbg.enable_all.build.flags.debug=-g
+suzuno32rv.menu.dbg.none=None
+suzuno32rv.menu.dbg.none.build.flags.debug=-DNDEBUG
+suzuno32rv.menu.dbg.enable_sym=Symbols Enabled (-g)
+suzuno32rv.menu.dbg.enable_sym.build.flags.debug=-g -DNDEBUG
+suzuno32rv.menu.dbg.enable_log=Core logs Enabled
+suzuno32rv.menu.dbg.enable_log.build.flags.debug=
+suzuno32rv.menu.dbg.enable_all=Core Logs and Symbols Enabled (-g)
+suzuno32rv.menu.dbg.enable_all.build.flags.debug=-g
 
 
 # C Runtime Library
-CH32V20x_EVT.menu.rtlib.nano=Newlib Nano (default)
-CH32V20x_EVT.menu.rtlib.nano.build.flags.ldflags=--specs=nano.specs --specs=nosys.specs
-CH32V20x_EVT.menu.rtlib.nanofp=Newlib Nano + Float Printf
-CH32V20x_EVT.menu.rtlib.nanofp.build.flags.ldflags=--specs=nano.specs --specs=nosys.specs -u _printf_float
-CH32V20x_EVT.menu.rtlib.nanofs=Newlib Nano + Float Scanf
-CH32V20x_EVT.menu.rtlib.nanofs.build.flags.ldflags=--specs=nano.specs --specs=nosys.specs -u _scanf_float
-CH32V20x_EVT.menu.rtlib.nanofps=Newlib Nano + Float Printf/Scanf
-CH32V20x_EVT.menu.rtlib.nanofps.build.flags.ldflags=--specs=nano.specs --specs=nosys.specs -u _printf_float -u _scanf_float
-CH32V20x_EVT.menu.rtlib.full=Newlib Standard
-CH32V20x_EVT.menu.rtlib.full.build.flags.ldflags=--specs=nosys.specs
+suzuno32rv.menu.rtlib.nano=Newlib Nano (default)
+suzuno32rv.menu.rtlib.nano.build.flags.ldflags=--specs=nano.specs --specs=nosys.specs
+suzuno32rv.menu.rtlib.nanofp=Newlib Nano + Float Printf
+suzuno32rv.menu.rtlib.nanofp.build.flags.ldflags=--specs=nano.specs --specs=nosys.specs -u _printf_float
+suzuno32rv.menu.rtlib.nanofs=Newlib Nano + Float Scanf
+suzuno32rv.menu.rtlib.nanofs.build.flags.ldflags=--specs=nano.specs --specs=nosys.specs -u _scanf_float
+suzuno32rv.menu.rtlib.nanofps=Newlib Nano + Float Printf/Scanf
+suzuno32rv.menu.rtlib.nanofps.build.flags.ldflags=--specs=nano.specs --specs=nosys.specs -u _printf_float -u _scanf_float
+suzuno32rv.menu.rtlib.full=Newlib Standard
+suzuno32rv.menu.rtlib.full.build.flags.ldflags=--specs=nosys.specs
+
+
+
+
+##############################################################################
+##Suzuno32RV Pro Micro Board
+
+suzuno32rv_pm.name=Suzuno32RV Pro Micro
+suzuno32rv_pm.build.core=arduino
+suzuno32rv_pm.build.board=SUZUNO32RV_PM
+suzuno32rv_pm.upload.maximum_size=229376
+suzuno32rv_pm.upload.maximum_data_size=20480
+suzuno32rv_pm.build.variant=CH32V20x/SUZUNO32RV_PM
+suzuno32rv_pm.build.variant_h=variant_SUZUNO32RV_PM.h
+suzuno32rv_pm.build.series=CH32V20x
+suzuno32rv_pm.build.mcu=QingKe-V4B
+suzuno32rv_pm.build.chip=CH32V203
+suzuno32rv_pm.build.march=rv32imacxw
+suzuno32rv_pm.build.mabi=ilp32
+suzuno32rv_pm.build.math_lib_gcc=-lm
+suzuno32rv_pm.build.IQ_math_RV32=
+suzuno32rv_pm.build.ch_extra_lib=-lprintf
+suzuno32rv_pm.build.board_extra_flags=
+suzuno32rv_pm.debug.tool=gdb-WCH_LinkE
+suzuno32rv_pm.bootloader.file={runtime.platform.path}/bootloader/hidbootloader-v0.2.1.hex
+suzuno32rv_pm.bootloader.address=0x08000000
+
+
+# USB support
+suzuno32rv_pm.menu.usb.none=None
+suzuno32rv_pm.menu.usb.none.build.usb_flags=
+suzuno32rv_pm.menu.usb.tinyusb_usbd=Adafruit TinyUSB with USBD
+suzuno32rv_pm.menu.usb.tinyusb_usbd.build.usb_flags=-DUSBCON -DUSE_TINYUSB -DCFG_TUD_ENABLED=1 -DCFG_TUD_WCH_USBIP_FSDEV=1 "-I{runtime.platform.path}/libraries/Adafruit_TinyUSB_Arduino/src/arduino"
+suzuno32rv_pm.menu.usb.tinyusb_usbd_usbfsh=Adafruit TinyUSB with USBD/USBFS Host
+suzuno32rv_pm.menu.usb.tinyusb_usbd_usbfsh.build.usb_flags=-DUSBCON -DUSE_TINYUSB -DCFG_TUD_ENABLED=1 -DCFG_TUD_WCH_USBIP_FSDEV=1 -DCFG_TUH_ENABLED=1 -DCFG_TUH_WCH_USBIP_USBFS=1 "-I{runtime.platform.path}/libraries/Adafruit_TinyUSB_Arduino/src/arduino"
+
+# Upload menu
+suzuno32rv_pm.menu.upload_method.hidmethod=HID Bootloader
+suzuno32rv_pm.menu.upload_method.hidmethod.upload.protocol=
+suzuno32rv_pm.menu.upload_method.hidmethod.upload.options=
+suzuno32rv_pm.menu.upload_method.hidmethod.upload.tool=hidbootloader
+suzuno32rv_pm.menu.upload_method.hidmethod.build.ldscript=Link_bootloader.ld
+suzuno32rv_pm.menu.upload_method.hidmethod.build.flash_base=0x08000000
+suzuno32rv_pm.menu.upload_method.hidmethod.build.flash_offset=0x00004000
+suzuno32rv_pm.menu.upload_method.hidmethod.build.family_id=0x699b62ec
+suzuno32rv_pm.menu.upload_method.ispMethod=WCH-ISP
+suzuno32rv_pm.menu.upload_method.ispMethod.upload.protocol=
+suzuno32rv_pm.menu.upload_method.ispMethod.upload.options=
+suzuno32rv_pm.menu.upload_method.ispMethod.upload.tool=wchisp
+suzuno32rv_pm.menu.upload_method.ispMethod.bootloader.tool=wchisp
+suzuno32rv_pm.menu.upload_method.swdMethod=WCH-SWD
+suzuno32rv_pm.menu.upload_method.swdMethod.upload.protocol=
+suzuno32rv_pm.menu.upload_method.swdMethod.upload.options=
+suzuno32rv_pm.menu.upload_method.swdMethod.upload.tool=WCH_linkE
+suzuno32rv_pm.menu.upload_method.swdMethod.bootloader.tool=WCH_linkE
+
+# Clock Select
+suzuno32rv_pm.menu.clock.144MHz_HSI=144MHz Internal
+suzuno32rv_pm.menu.clock.144MHz_HSI.build.flags.clock=-DSYSCLK_FREQ_144MHz_HSI=144000000 -DF_CPU=144000000
+suzuno32rv_pm.menu.clock.120MHz_HSI=120MHz Internal
+suzuno32rv_pm.menu.clock.120MHz_HSI.build.flags.clock=-DSYSCLK_FREQ_120MHz_HSI=120000000 -DF_CPU=120000000
+suzuno32rv_pm.menu.clock.96MHz_HSI=96MHz Internal
+suzuno32rv_pm.menu.clock.96MHz_HSI.build.flags.clock=-DSYSCLK_FREQ_96MHz_HSI=96000000 -DF_CPU=96000000
+suzuno32rv_pm.menu.clock.72MHz_HSI=72MHz Internal
+suzuno32rv_pm.menu.clock.72MHz_HSI.build.flags.clock=-DSYSCLK_FREQ_72MHz_HSI=72000000 -DF_CPU=72000000
+suzuno32rv_pm.menu.clock.56MHz_HSI=56MHz Internal
+suzuno32rv_pm.menu.clock.56MHz_HSI.build.flags.clock=-DSYSCLK_FREQ_56MHz_HSI=56000000 -DF_CPU=56000000
+suzuno32rv_pm.menu.clock.48MHz_HSI=48MHz Internal
+suzuno32rv_pm.menu.clock.48MHz_HSI.build.flags.clock=-DSYSCLK_FREQ_48MHz_HSI=48000000 -DF_CPU=48000000
+suzuno32rv_pm.menu.clock.HSI=HSI Internal
+suzuno32rv_pm.menu.clock.HSI.build.flags.clock=-DSYSCLK_FREQ_HSI=HSI_VALUE -DF_CPU=HSI_VALUE
+suzuno32rv_pm.menu.clock.144MHz_HSE=144MHz External
+suzuno32rv_pm.menu.clock.144MHz_HSE.build.flags.clock=-DSYSCLK_FREQ_144MHz_HSE=144000000 -DF_CPU=144000000
+suzuno32rv_pm.menu.clock.120MHz_HSE=120MHz External
+suzuno32rv_pm.menu.clock.120MHz_HSE.build.flags.clock=-DSYSCLK_FREQ_120MHz_HSE=120000000 -DF_CPU=120000000
+suzuno32rv_pm.menu.clock.96MHz_HSE=96MHz External
+suzuno32rv_pm.menu.clock.96MHz_HSE.build.flags.clock=-DSYSCLK_FREQ_96MHz_HSE=96000000 -DF_CPU=96000000
+suzuno32rv_pm.menu.clock.72MHz_HSE=72MHz External
+suzuno32rv_pm.menu.clock.72MHz_HSE.build.flags.clock=-DSYSCLK_FREQ_72MHz_HSE=72000000 -DF_CPU=72000000
+suzuno32rv_pm.menu.clock.56MHz_HSE=56MHz External
+suzuno32rv_pm.menu.clock.56MHz_HSE.build.flags.clock=-DSYSCLK_FREQ_56MHz_HSE=56000000 -DF_CPU=56000000
+suzuno32rv_pm.menu.clock.48MHz_HSE=48MHz External
+suzuno32rv_pm.menu.clock.48MHz_HSE.build.flags.clock=-DSYSCLK_FREQ_48MHz_HSE=48000000 -DF_CPU=48000000
+suzuno32rv_pm.menu.clock.HSE=HSE External
+suzuno32rv_pm.menu.clock.HSE.build.flags.clock=-DSYSCLK_FREQ_HSE=HSE_VALUE -DF_CPU=HSE_VALUE
+
+
+# Optimizations
+suzuno32rv_pm.menu.opt.osstd=Smallest (-Os default)
+suzuno32rv_pm.menu.opt.osstd.build.flags.optimize=-Os
+suzuno32rv_pm.menu.opt.oslto=Smallest (-Os) with LTO
+suzuno32rv_pm.menu.opt.oslto.build.flags.optimize=-Os -flto
+suzuno32rv_pm.menu.opt.o1std=Fast (-O1)
+suzuno32rv_pm.menu.opt.o1std.build.flags.optimize=-O1
+suzuno32rv_pm.menu.opt.o1lto=Fast (-O1) with LTO
+suzuno32rv_pm.menu.opt.o1lto.build.flags.optimize=-O1 -flto
+suzuno32rv_pm.menu.opt.o2std=Faster (-O2)
+suzuno32rv_pm.menu.opt.o2std.build.flags.optimize=-O2
+suzuno32rv_pm.menu.opt.o2lto=Faster (-O2) with LTO
+suzuno32rv_pm.menu.opt.o2lto.build.flags.optimize=-O2 -flto
+suzuno32rv_pm.menu.opt.o3std=Fastest (-O3)
+suzuno32rv_pm.menu.opt.o3std.build.flags.optimize=-O3
+suzuno32rv_pm.menu.opt.o3lto=Fastest (-O3) with LTO
+suzuno32rv_pm.menu.opt.o3lto.build.flags.optimize=-O3 -flto
+suzuno32rv_pm.menu.opt.ogstd=Debug (-Og)
+suzuno32rv_pm.menu.opt.ogstd.build.flags.optimize=-Og
+suzuno32rv_pm.menu.opt.o0std=No Optimization (-O0)
+suzuno32rv_pm.menu.opt.o0std.build.flags.optimize=-O0
+
+
+# Debug information
+suzuno32rv_pm.menu.dbg.none=None
+suzuno32rv_pm.menu.dbg.none.build.flags.debug=-DNDEBUG
+suzuno32rv_pm.menu.dbg.enable_sym=Symbols Enabled (-g)
+suzuno32rv_pm.menu.dbg.enable_sym.build.flags.debug=-g -DNDEBUG
+suzuno32rv_pm.menu.dbg.enable_log=Core logs Enabled
+suzuno32rv_pm.menu.dbg.enable_log.build.flags.debug=
+suzuno32rv_pm.menu.dbg.enable_all=Core Logs and Symbols Enabled (-g)
+suzuno32rv_pm.menu.dbg.enable_all.build.flags.debug=-g
+
+
+# C Runtime Library
+suzuno32rv_pm.menu.rtlib.nano=Newlib Nano (default)
+suzuno32rv_pm.menu.rtlib.nano.build.flags.ldflags=--specs=nano.specs --specs=nosys.specs
+suzuno32rv_pm.menu.rtlib.nanofp=Newlib Nano + Float Printf
+suzuno32rv_pm.menu.rtlib.nanofp.build.flags.ldflags=--specs=nano.specs --specs=nosys.specs -u _printf_float
+suzuno32rv_pm.menu.rtlib.nanofs=Newlib Nano + Float Scanf
+suzuno32rv_pm.menu.rtlib.nanofs.build.flags.ldflags=--specs=nano.specs --specs=nosys.specs -u _scanf_float
+suzuno32rv_pm.menu.rtlib.nanofps=Newlib Nano + Float Printf/Scanf
+suzuno32rv_pm.menu.rtlib.nanofps.build.flags.ldflags=--specs=nano.specs --specs=nosys.specs -u _printf_float -u _scanf_float
+suzuno32rv_pm.menu.rtlib.full=Newlib Standard
+suzuno32rv_pm.menu.rtlib.full.build.flags.ldflags=--specs=nosys.specs
+
+
+
+
+##############################################################################
+##Suzuduino UNO Board
+
+suzuduino_uno.name=Suzuduino UNO
+suzuduino_uno.build.core=arduino
+suzuduino_uno.build.board=SUZUDUINO_UNO
+suzuduino_uno.upload.maximum_size=229376
+suzuduino_uno.upload.maximum_data_size=20480
+suzuduino_uno.build.variant=CH32V20x/SUZUDUINO_UNO
+suzuduino_uno.build.variant_h=variant_SUZUDUINO_UNO.h
+suzuduino_uno.build.series=CH32V20x
+suzuduino_uno.build.mcu=QingKe-V4B
+suzuduino_uno.build.chip=CH32V203
+suzuduino_uno.build.march=rv32imacxw
+suzuduino_uno.build.mabi=ilp32
+suzuduino_uno.build.math_lib_gcc=-lm
+suzuduino_uno.build.IQ_math_RV32=
+suzuduino_uno.build.ch_extra_lib=-lprintf
+suzuduino_uno.build.board_extra_flags=
+suzuduino_uno.debug.tool=gdb-WCH_LinkE
+suzuduino_uno.bootloader.file={runtime.platform.path}/bootloader/hidbootloader-v0.2.1.hex
+suzuduino_uno.bootloader.address=0x08000000
+
+
+# USB support
+suzuduino_uno.menu.usb.none=None
+suzuduino_uno.menu.usb.none.build.usb_flags=
+suzuduino_uno.menu.usb.tinyusb_usbd=Adafruit TinyUSB with USBD
+suzuduino_uno.menu.usb.tinyusb_usbd.build.usb_flags=-DUSBCON -DUSE_TINYUSB -DCFG_TUD_ENABLED=1 -DCFG_TUD_WCH_USBIP_FSDEV=1 "-I{runtime.platform.path}/libraries/Adafruit_TinyUSB_Arduino/src/arduino"
+suzuduino_uno.menu.usb.tinyusb_usbd_usbfsh=Adafruit TinyUSB with USBD/USBFS Host
+suzuduino_uno.menu.usb.tinyusb_usbd_usbfsh.build.usb_flags=-DUSBCON -DUSE_TINYUSB -DCFG_TUD_ENABLED=1 -DCFG_TUD_WCH_USBIP_FSDEV=1 -DCFG_TUH_ENABLED=1 -DCFG_TUH_WCH_USBIP_USBFS=1 "-I{runtime.platform.path}/libraries/Adafruit_TinyUSB_Arduino/src/arduino"
+
+# Upload menu
+suzuduino_uno.menu.upload_method.ispMethod=WCH-ISP
+suzuduino_uno.menu.upload_method.ispMethod.upload.protocol=
+suzuduino_uno.menu.upload_method.ispMethod.upload.options=
+suzuduino_uno.menu.upload_method.ispMethod.upload.tool=wchisp
+suzuduino_uno.menu.upload_method.ispMethod.bootloader.tool=wchisp
+suzuduino_uno.menu.upload_method.swdMethod=WCH-SWD
+suzuduino_uno.menu.upload_method.swdMethod.upload.protocol=
+suzuduino_uno.menu.upload_method.swdMethod.upload.options=
+suzuduino_uno.menu.upload_method.swdMethod.upload.tool=WCH_linkE
+suzuduino_uno.menu.upload_method.swdMethod.bootloader.tool=WCH_linkE
+suzuduino_uno.menu.upload_method.hidmethod=HID Bootloader
+suzuduino_uno.menu.upload_method.hidmethod.upload.protocol=
+suzuduino_uno.menu.upload_method.hidmethod.upload.options=
+suzuduino_uno.menu.upload_method.hidmethod.upload.tool=hidbootloader
+suzuduino_uno.menu.upload_method.hidmethod.build.ldscript=Link_bootloader.ld
+suzuduino_uno.menu.upload_method.hidmethod.build.flash_base=0x08000000
+suzuduino_uno.menu.upload_method.hidmethod.build.flash_offset=0x00004000
+suzuduino_uno.menu.upload_method.hidmethod.build.family_id=0x699b62ec
+
+# Clock Select
+suzuduino_uno.menu.clock.144MHz_HSI=144MHz Internal
+suzuduino_uno.menu.clock.144MHz_HSI.build.flags.clock=-DSYSCLK_FREQ_144MHz_HSI=144000000 -DF_CPU=144000000
+suzuduino_uno.menu.clock.120MHz_HSI=120MHz Internal
+suzuduino_uno.menu.clock.120MHz_HSI.build.flags.clock=-DSYSCLK_FREQ_120MHz_HSI=120000000 -DF_CPU=120000000
+suzuduino_uno.menu.clock.96MHz_HSI=96MHz Internal
+suzuduino_uno.menu.clock.96MHz_HSI.build.flags.clock=-DSYSCLK_FREQ_96MHz_HSI=96000000 -DF_CPU=96000000
+suzuduino_uno.menu.clock.72MHz_HSI=72MHz Internal
+suzuduino_uno.menu.clock.72MHz_HSI.build.flags.clock=-DSYSCLK_FREQ_72MHz_HSI=72000000 -DF_CPU=72000000
+suzuduino_uno.menu.clock.56MHz_HSI=56MHz Internal
+suzuduino_uno.menu.clock.56MHz_HSI.build.flags.clock=-DSYSCLK_FREQ_56MHz_HSI=56000000 -DF_CPU=56000000
+suzuduino_uno.menu.clock.48MHz_HSI=48MHz Internal
+suzuduino_uno.menu.clock.48MHz_HSI.build.flags.clock=-DSYSCLK_FREQ_48MHz_HSI=48000000 -DF_CPU=48000000
+suzuduino_uno.menu.clock.HSI=HSI Internal
+suzuduino_uno.menu.clock.HSI.build.flags.clock=-DSYSCLK_FREQ_HSI=HSI_VALUE -DF_CPU=HSI_VALUE
+suzuduino_uno.menu.clock.144MHz_HSE=144MHz External
+suzuduino_uno.menu.clock.144MHz_HSE.build.flags.clock=-DSYSCLK_FREQ_144MHz_HSE=144000000 -DF_CPU=144000000
+suzuduino_uno.menu.clock.120MHz_HSE=120MHz External
+suzuduino_uno.menu.clock.120MHz_HSE.build.flags.clock=-DSYSCLK_FREQ_120MHz_HSE=120000000 -DF_CPU=120000000
+suzuduino_uno.menu.clock.96MHz_HSE=96MHz External
+suzuduino_uno.menu.clock.96MHz_HSE.build.flags.clock=-DSYSCLK_FREQ_96MHz_HSE=96000000 -DF_CPU=96000000
+suzuduino_uno.menu.clock.72MHz_HSE=72MHz External
+suzuduino_uno.menu.clock.72MHz_HSE.build.flags.clock=-DSYSCLK_FREQ_72MHz_HSE=72000000 -DF_CPU=72000000
+suzuduino_uno.menu.clock.56MHz_HSE=56MHz External
+suzuduino_uno.menu.clock.56MHz_HSE.build.flags.clock=-DSYSCLK_FREQ_56MHz_HSE=56000000 -DF_CPU=56000000
+suzuduino_uno.menu.clock.48MHz_HSE=48MHz External
+suzuduino_uno.menu.clock.48MHz_HSE.build.flags.clock=-DSYSCLK_FREQ_48MHz_HSE=48000000 -DF_CPU=48000000
+suzuduino_uno.menu.clock.HSE=HSE External
+suzuduino_uno.menu.clock.HSE.build.flags.clock=-DSYSCLK_FREQ_HSE=HSE_VALUE -DF_CPU=HSE_VALUE
+
+
+# Optimizations
+suzuduino_uno.menu.opt.osstd=Smallest (-Os default)
+suzuduino_uno.menu.opt.osstd.build.flags.optimize=-Os
+suzuduino_uno.menu.opt.oslto=Smallest (-Os) with LTO
+suzuduino_uno.menu.opt.oslto.build.flags.optimize=-Os -flto
+suzuduino_uno.menu.opt.o1std=Fast (-O1)
+suzuduino_uno.menu.opt.o1std.build.flags.optimize=-O1
+suzuduino_uno.menu.opt.o1lto=Fast (-O1) with LTO
+suzuduino_uno.menu.opt.o1lto.build.flags.optimize=-O1 -flto
+suzuduino_uno.menu.opt.o2std=Faster (-O2)
+suzuduino_uno.menu.opt.o2std.build.flags.optimize=-O2
+suzuduino_uno.menu.opt.o2lto=Faster (-O2) with LTO
+suzuduino_uno.menu.opt.o2lto.build.flags.optimize=-O2 -flto
+suzuduino_uno.menu.opt.o3std=Fastest (-O3)
+suzuduino_uno.menu.opt.o3std.build.flags.optimize=-O3
+suzuduino_uno.menu.opt.o3lto=Fastest (-O3) with LTO
+suzuduino_uno.menu.opt.o3lto.build.flags.optimize=-O3 -flto
+suzuduino_uno.menu.opt.ogstd=Debug (-Og)
+suzuduino_uno.menu.opt.ogstd.build.flags.optimize=-Og
+suzuduino_uno.menu.opt.o0std=No Optimization (-O0)
+suzuduino_uno.menu.opt.o0std.build.flags.optimize=-O0
+
+
+# Debug information
+suzuduino_uno.menu.dbg.none=None
+suzuduino_uno.menu.dbg.none.build.flags.debug=-DNDEBUG
+suzuduino_uno.menu.dbg.enable_sym=Symbols Enabled (-g)
+suzuduino_uno.menu.dbg.enable_sym.build.flags.debug=-g -DNDEBUG
+suzuduino_uno.menu.dbg.enable_log=Core logs Enabled
+suzuduino_uno.menu.dbg.enable_log.build.flags.debug=
+suzuduino_uno.menu.dbg.enable_all=Core Logs and Symbols Enabled (-g)
+suzuduino_uno.menu.dbg.enable_all.build.flags.debug=-g
+
+
+# C Runtime Library
+suzuduino_uno.menu.rtlib.nano=Newlib Nano (default)
+suzuduino_uno.menu.rtlib.nano.build.flags.ldflags=--specs=nano.specs --specs=nosys.specs
+suzuduino_uno.menu.rtlib.nanofp=Newlib Nano + Float Printf
+suzuduino_uno.menu.rtlib.nanofp.build.flags.ldflags=--specs=nano.specs --specs=nosys.specs -u _printf_float
+suzuduino_uno.menu.rtlib.nanofs=Newlib Nano + Float Scanf
+suzuduino_uno.menu.rtlib.nanofs.build.flags.ldflags=--specs=nano.specs --specs=nosys.specs -u _scanf_float
+suzuduino_uno.menu.rtlib.nanofps=Newlib Nano + Float Printf/Scanf
+suzuduino_uno.menu.rtlib.nanofps.build.flags.ldflags=--specs=nano.specs --specs=nosys.specs -u _printf_float -u _scanf_float
+suzuduino_uno.menu.rtlib.full=Newlib Standard
+suzuduino_uno.menu.rtlib.full.build.flags.ldflags=--specs=nosys.specs
+

@@ -1,120 +1,102 @@
 #!/usr/bin/env python3
 
+import contextlib
+import io
+import sys
+
 
 # mcu: march, mabi, math_lib_gcc, IQ_math_RV32, ch_extra_lib
 mcu_list = {
-    'QingKe-V2A': {'march': 'rv32ecxw', 'mabi': 'ilp32e', 'ch_extra_lib': '-lprintf'},
-    'QingKe-V2C': {'march': 'rv32ecxw', 'mabi': 'ilp32e', 'ch_extra_lib': '-lprintf'},
-    'QingKe-V3A': {'march': 'rv32imac', 'mabi': 'ilp32', 'ch_extra_lib': '-lprintf'},
-    'QingKe-V4B': {'march': 'rv32imacxw', 'mabi': 'ilp32', 'ch_extra_lib': '-lprintf'},
-    'QingKe-V4C': {'march': 'rv32imacxw', 'mabi': 'ilp32', 'ch_extra_lib': '-lprintf'},
-    'QingKe-V4F': {'march': 'rv32imafcxw', 'mabi': 'ilp32f', 'ch_extra_lib': '-lprintfloat'},
+    "QingKe-V2A": {"march": "rv32ecxw", "mabi": "ilp32e", "ch_extra_lib": "-lprintf"},
+    "QingKe-V2C": {"march": "rv32ecxw", "mabi": "ilp32e", "ch_extra_lib": "-lprintf"},
+    "QingKe-V3A": {"march": "rv32imac", "mabi": "ilp32", "ch_extra_lib": "-lprintf"},
+    "QingKe-V4B": {"march": "rv32imacxw", "mabi": "ilp32", "ch_extra_lib": "-lprintf"},
+    "QingKe-V4C": {"march": "rv32imacxw", "mabi": "ilp32", "ch_extra_lib": "-lprintf"},
+    "QingKe-V4F": {"march": "rv32imafcxw", "mabi": "ilp32f", "ch_extra_lib": "-lprintfloat"},
 }
 
 usb_list = {
-    'tinyusb_usbd': {
-        'name': 'Adafruit TinyUSB with USBD',
-        'usb_flags': '-DUSBCON -DUSE_TINYUSB -DCFG_TUD_ENABLED=1 -DCFG_TUD_WCH_USBIP_FSDEV=1 "-I{runtime.platform.path}/libraries/Adafruit_TinyUSB_Arduino/src/arduino"'
+    "tinyusb_usbd": {
+        "name": "Adafruit TinyUSB with USBD",
+        "usb_flags": '-DUSBCON -DUSE_TINYUSB -DCFG_TUD_ENABLED=1 -DCFG_TUD_WCH_USBIP_FSDEV=1 "-I{runtime.platform.path}/libraries/Adafruit_TinyUSB_Arduino/src/arduino"',
     },
-    'tinyusb_usbd_usbfsh': {
-        'name': 'Adafruit TinyUSB with USBD/USBFS Host',
-        'usb_flags': '-DUSBCON -DUSE_TINYUSB -DCFG_TUD_ENABLED=1 -DCFG_TUD_WCH_USBIP_FSDEV=1 -DCFG_TUH_ENABLED=1 -DCFG_TUH_WCH_USBIP_USBFS=1 "-I{runtime.platform.path}/libraries/Adafruit_TinyUSB_Arduino/src/arduino"'
+    "tinyusb_usbd_usbfsh": {
+        "name": "Adafruit TinyUSB with USBD/USBFS Host",
+        "usb_flags": '-DUSBCON -DUSE_TINYUSB -DCFG_TUD_ENABLED=1 -DCFG_TUD_WCH_USBIP_FSDEV=1 -DCFG_TUH_ENABLED=1 -DCFG_TUH_WCH_USBIP_USBFS=1 "-I{runtime.platform.path}/libraries/Adafruit_TinyUSB_Arduino/src/arduino"',
     },
-    # 'tinyusb_usbfs': {
-    #     'name': 'Adafruit TinyUSB with USBFS Device',
-    #     'usb_flags': '-DUSBCON -DUSE_TINYUSB -DCFG_TUD_WCH_USBIP_USBFS=1 "-I{runtime.platform.path}/libraries/Adafruit_TinyUSB_Arduino/src/arduino"'
-    # },
-    # 'tinyusb_usbhs': {
-    #     'name': 'Adafruit TinyUSB with USBHS',
-    #     'usb_flags': '-DUSBCON -DUSE_TINYUSB -DCFG_TUD_WCH_USBIP_USBHS=1 "-I{runtime.platform.path}/libraries/Adafruit_TinyUSB_Arduino/src/arduino"'
-    # },
 }
 
-# series: name, pnums
-board_list = {
-    # 'CH32V00x': {
-    #     'name': 'CH32V00x_EVT',
-    #     'info': '',
-    #     'usb': [],
-    #     'hsi': [48, 24, 8],
-    #     'hse': [48, 24, 8],
-    #     'pnums': {
-    #         'CH32V003F4': {'name': 'CH32V003F4 EVT', 'maximum_size': 16384, 'maximum_data_size': 2048, 'mcu': 'QingKe-V2A', 'chip': 'CH32V003F4'},
-    #     }
-    # },
-    # 'CH32VM00X': {
-    #     'name': 'CH32VM00X_EVT',
-    #     'info': 'including V/M 002 004 005 006 007',
-    #     'usb': [],
-    #     'hsi': [48, 24, 8],
-    #     'hse': [48, 24, 8],
-    #     'pnums': {
-    #         'CH32V006K8': {'name': 'CH32V006K8 EVT', 'maximum_size': 63488, 'maximum_data_size': 8192, 'mcu': 'QingKe-V2C', 'chip': 'CH32V006K8'},
-    #     }
-    # },
-    # 'CH32X035': {
-    #     'name': 'CH32X035_EVT',
-    #     'info': '',
-    #     'usb': [],
-    #     'hsi': [48, 24, 16, 12, 8],
-    #     'hse': [],
-    #     'pnums': {
-    #         'CH32X035G8U': {'name': 'CH32X035G8U EVT', 'maximum_size': 63488, 'maximum_data_size': 20480, 'mcu': 'QingKe-V4C', 'chip': 'CH32X035G8U'},
-    #     }
-    # },
-    # 'CH32V10x': {
-    #     'name': 'CH32V10x_EVT',
-    #     'info': '-lprintf, CH32V10x_3V3: 3.3V power supply  CH32V10x_5V: 5V power supply',
-    #     'usb': [],
-    #     'hsi': [72, 56, 48, 8],
-    #     'hse': [72, 56, 48, 8],
-    #     'pnums': {
-    #         'CH32V103R8T6': {'name': 'CH32V103R8T6 EVT', 'maximum_size': 65536, 'maximum_data_size': 20480, 'mcu': 'QingKe-V3A', 'chip': 'CH32V10x_3V3'},
-    #     }
-    # },
-    'CH32V20x': {
-        'name': 'CH32V20x_EVT',
-        'info': '',
-        'usb': ['tinyusb_usbd', 'tinyusb_usbd_usbfsh'],
-        'hsi': [144, 120, 96, 72, 56, 48, 0],
-        'hse': [144, 120, 96, 72, 56, 48, 0],
-        'pnums': {
-            # 'CH32V203RB': {'name': 'CH32V203RB EVT', 'maximum_size': 131072, 'maximum_data_size': 65536, 'mcu': 'QingKe-V4C', 'chip': 'CH32V203'},
-            # 'CH32V203G8': {'name': 'CH32V203G8 EVT', 'maximum_size': 65536, 'maximum_data_size': 20480, 'mcu': 'QingKe-V4B', 'chip': 'CH32V203'},
-            # 'CH32V203G6': {'name': 'CH32V203G6 EVT', 'maximum_size': 32768, 'maximum_data_size': 10240, 'mcu': 'QingKe-V4B', 'chip': 'CH32V203'},
-            # 'CH32V203C8': {'name': 'CH32V203C8', 'maximum_size': 65536, 'maximum_data_size': 20480, 'mcu': 'QingKe-V4B', 'chip': 'CH32V203'},
-            # 'CH32V203C6': {'name': 'CH32V203C6', 'maximum_size': 32768, 'maximum_data_size': 10240, 'mcu': 'QingKe-V4B', 'chip': 'CH32V203'},
-            # 'CH32V203G6_ADAFRUIT_QTPY': {'name': 'Adafruit QTPy CH32V203G6', 'maximum_size': 229376, 'maximum_data_size': 10240, 'mcu': 'QingKe-V4B', 'chip': 'CH32V203'},
-            'CH32V203C8_Suzuno32RV': {'name': 'Suzuno32RV/SuzuduinoUNO', 'maximum_size': 229376, 'maximum_data_size': 20480, 'mcu': 'QingKe-V4B', 'chip': 'CH32V203', 'buildflags': ''}
-        }
+upload_method_list = {
+    "ispMethod": {
+        "name": "WCH-ISP",
+        "upload.tool": "wchisp",
+        "bootloader.tool": "wchisp",
     },
-    # 'CH32V30x': {
-    #     'name': 'CH32V30x_EVT',
-    #     'info': '-lprintfloat, CH32V30x_C: connected product_line  CH32V30x: normal product_line',
-    #     'usb': ['tinyusb_usbhs', 'tinyusb_usbfs'],
-    #     'hsi': [144, 120, 96, 72, 56, 48, 0],
-    #     'hse': [144, 120, 96, 72, 56, 48, 0],
-    #     'pnums': {
-    #         'CH32V307VCT6': {'name': 'CH32V307VCT6 EVT', 'maximum_size': 262144, 'maximum_data_size': 65536, 'mcu': 'QingKe-V4F', 'chip': 'CH32V30x_C'},
-    #     }
-    # },
-    # 'CH32L10x': {
-    #     'name': 'CH32L10x_EVT',
-    #     'info': '-lprintf',
-    #     'usb': [],
-    #     'hsi': [96, 72, 56, 48, 0, 'HSI_LP'],
-    #     'hse': [96, 72, 56, 48, 0],
-    #     'pnums': {
-    #         'CH32L103C8T6': {'name': 'CH32L103C8T6 EVT', 'maximum_size': 65536, 'maximum_data_size': 20480, 'mcu': 'QingKe-V4C', 'chip': 'CH32L10x'},
-    #     }
-    # }
+    "swdMethod": {
+        "name": "WCH-SWD",
+        "upload.tool": "WCH_linkE",
+        "bootloader.tool": "WCH_linkE",
+    },
+    "hidmethod": {
+        "name": "HID Bootloader",
+        "upload.tool": "hidbootloader",
+        "build.ldscript": "Link_bootloader.ld",
+        "build.flash_base": "0x08000000",
+        "build.flash_offset": "0x00004000",
+        "build.family_id": "0x699b62ec",
+    },
+}
+
+profiles = {
+    "ch32v203c8_suzuno_common": {
+        "series": "CH32V20x",
+        "mcu": "QingKe-V4B",
+        "chip": "CH32V203",
+        "maximum_size": 229376,
+        "maximum_data_size": 20480,
+        "variant": "CH32V20x/CH32V203C8_Suzuno32RV",
+        "variant_h": "variant_CH32V203C8_Suzuno32RV.h",
+        "buildflags": "",
+        "usb": ["tinyusb_usbd", "tinyusb_usbd_usbfsh"],
+        "hsi": [144, 120, 96, 72, 56, 48, 0],
+        "hse": [144, 120, 96, 72, 56, 48, 0],
+        "upload_methods": ["ispMethod", "swdMethod", "hidmethod"],
+        "bootloader": {
+            "file": "{runtime.platform.path}/bootloader/hidbootloader-v0.2.1.hex",
+            "address": "0x08000000",
+        },
+    },
+}
+
+boards = {
+    "suzuno32rv": {
+        "name": "Suzuno32RV",
+        "profile": "ch32v203c8_suzuno_common",
+        "build_board": "SUZUNO32RV",
+        "variant": "CH32V20x/SUZUNO32RV",
+        "variant_h": "variant_SUZUNO32RV.h",
+    },
+    "suzuno32rv_pm": {
+        "name": "Suzuno32RV Pro Micro",
+        "profile": "ch32v203c8_suzuno_common",
+        "build_board": "SUZUNO32RV_PM",
+        "variant": "CH32V20x/SUZUNO32RV_PM",
+        "variant_h": "variant_SUZUNO32RV_PM.h",
+        "upload_methods": ["hidmethod", "ispMethod", "swdMethod"],
+    },
+    "suzuduino_uno": {
+        "name": "Suzuduino UNO",
+        "profile": "ch32v203c8_suzuno_common",
+        "build_board": "SUZUDUINO_UNO",
+        "variant": "CH32V20x/SUZUDUINO_UNO",
+        "variant_h": "variant_SUZUDUINO_UNO.h",
+    },
 }
 
 
 def build_global_menu():
     print("""# See: https://arduino.github.io/arduino-cli/latest/platform-specification/
 
-menu.pnum=Board Select
 menu.clock=Clock Select
 menu.xserial=U(S)ART support
 menu.usb=USB support (if available)
@@ -127,189 +109,193 @@ menu.rtlib=C Runtime Library
 menu.upload_method=Upload method""")
 
 
-def build_header(series, values):
+def merged_board(board_id, board):
+    profile = profiles[board["profile"]]
+    merged = dict(profile)
+    merged.update(board)
+    merged["id"] = board_id
+    return merged
+
+
+def build_header(board):
+    board_id = board["id"]
+    mcu = board["mcu"]
     print()
     print()
     print()
-    print('#'*78)
-    name = values["name"]
-    print(f'##{name} Board   {values["info"]}')
+    print("#" * 78)
+    print(f"##{board['name']} Board")
     print()
-    print(f'{name}.name={series}')
-    print(f'{name}.build.core=arduino')
-    print(f'{name}.build.board={name}')
-    print(f'{name}.upload.maximum_size=0')
-    print(f'{name}.upload.maximum_data_size=0')
-    print(f'{name}.build.variant_h=variant_{{build.board}}.h')
-    print(f'{name}.debug.tool=gdb-WCH_LinkE')
+    print(f"{board_id}.name={board['name']}")
+    print(f"{board_id}.build.core=arduino")
+    print(f"{board_id}.build.board={board['build_board']}")
+    print(f"{board_id}.upload.maximum_size={board['maximum_size']}")
+    print(f"{board_id}.upload.maximum_data_size={board['maximum_data_size']}")
+    print(f"{board_id}.build.variant={board['variant']}")
+    print(f"{board_id}.build.variant_h={board['variant_h']}")
+    print(f"{board_id}.build.series={board['series']}")
+    print(f"{board_id}.build.mcu={mcu}")
+    print(f"{board_id}.build.chip={board['chip']}")
+    print(f"{board_id}.build.march={mcu_list[mcu]['march']}")
+    print(f"{board_id}.build.mabi={mcu_list[mcu]['mabi']}")
+    print(f"{board_id}.build.math_lib_gcc=-lm")
+    print(f"{board_id}.build.IQ_math_RV32=")
+    print(f"{board_id}.build.ch_extra_lib={mcu_list[mcu]['ch_extra_lib'] or ''}")
+    print(f"{board_id}.build.board_extra_flags={board.get('buildflags', '')}")
+    print(f"{board_id}.debug.tool=gdb-WCH_LinkE")
+    if "bootloader" in board:
+        print(f"{board_id}.bootloader.file={board['bootloader']['file']}")
+        print(f"{board_id}.bootloader.address={board['bootloader']['address']}")
     print()
 
 
-def build_pnum(series, values):
-    print()
-    for p, pv in values['pnums'].items():
-        menu = f'{values["name"]}.menu.pnum.{p}'
-        mcu = pv["mcu"]
-        print(f'#{pv["name"]} Board')
-        print(f'{menu}={pv["name"]}')
-        print(f'{menu}.node={p.replace("CH32", "NODE_")}')
-        print(f'{menu}.upload.maximum_size={pv["maximum_size"]}')
-        print(f'{menu}.upload.maximum_data_size={pv["maximum_data_size"]}')
-        print(f'{menu}.build.mcu={mcu}')
-        print(f'{menu}.build.board={p}')
-        print(f'{menu}.build.series={series}')
-        print(f'{menu}.build.variant={series}/{p}')
-        print(f'{menu}.build.chip={pv["chip"]}')
-        print(f'{menu}.build.march={mcu_list[mcu]["march"]}')
-        print(f'{menu}.build.mabi={mcu_list[mcu]["mabi"]}')
-        print(f'{menu}.build.math_lib_gcc=-lm')
-        print(f'{menu}.build.IQ_math_RV32=')
-        print(f'{menu}.build.ch_extra_lib={(mcu_list[mcu]["ch_extra_lib"]) or ""}')
-        print(f'{menu}.build.board_extra_flags={(pv["buildflags"]) if "buildflags" in pv else ""}')
-        print()
-
-
-def build_usb(series, values):
-    if len(values['usb']) == 0:
+def build_usb(board):
+    if not board["usb"]:
         return
+    board_id = board["id"]
     print()
     print("# USB support")
-    name = values["name"]
-    menu = f'{name}.menu.usb'
-    print(f'{menu}.none=None')
-    print(f'{menu}.none.build.usb_flags=')
-    for usb in values['usb']:
-        print(f'{menu}.{usb}={usb_list[usb]["name"]}')
-        print(f'{menu}.{usb}.build.usb_flags={usb_list[usb]["usb_flags"]}')
+    menu = f"{board_id}.menu.usb"
+    print(f"{menu}.none=None")
+    print(f"{menu}.none.build.usb_flags=")
+    for usb in board["usb"]:
+        print(f"{menu}.{usb}={usb_list[usb]['name']}")
+        print(f"{menu}.{usb}.build.usb_flags={usb_list[usb]['usb_flags']}")
 
 
-def build_upload(series, values):
+def build_upload(board):
+    board_id = board["id"]
     print()
     print("# Upload menu")
-    name = values["name"]
-    menu = f'{name}.menu.upload_method'
+    menu = f"{board_id}.menu.upload_method"
 
-    menu_isp = f'{menu}.ispMethod'
-    print(f'{menu_isp}=WCH-ISP')
-    print(f'{menu_isp}.upload.protocol=')
-    print(f'{menu_isp}.upload.options=')
-    print(f'{menu_isp}.upload.tool=wchisp')
-
-    menu_swd = f'{menu}.swdMethod'
-    print(f'{menu_swd}=WCH-SWD')
-    print(f'{menu_swd}.upload.protocol=')
-    print(f'{menu_swd}.upload.options=')
-    print(f'{menu_swd}.upload.tool=WCH_linkE')
-
-    print()
+    for method in board["upload_methods"]:
+        config = upload_method_list[method]
+        entry = f"{menu}.{method}"
+        print(f"{entry}={config['name']}")
+        print(f"{entry}.upload.protocol=")
+        print(f"{entry}.upload.options=")
+        for key, value in config.items():
+            if key == "name":
+                continue
+            print(f"{entry}.{key}={value}")
 
 
-def build_optimization(series, values):
-    print()
-    print("# Optimizations")
-    name = values["name"]
-    menu = f'{name}.menu.opt'
-
-    print(f'{menu}.osstd=Smallest (-Os default)')
-    print(f'{menu}.osstd.build.flags.optimize=-Os')
-    print(f'{menu}.oslto=Smallest (-Os) with LTO')
-    print(f'{menu}.oslto.build.flags.optimize=-Os -flto')
-
-    print(f'{menu}.o1std=Fast (-O1)')
-    print(f'{menu}.o1std.build.flags.optimize=-O1')
-    print(f'{menu}.o1lto=Fast (-O1) with LTO')
-    print(f'{menu}.o1lto.build.flags.optimize=-O1 -flto')
-
-    print(f'{menu}.o2std=Faster (-O2)')
-    print(f'{menu}.o2std.build.flags.optimize=-O2')
-    print(f'{menu}.o2lto=Faster (-O2) with LTO')
-    print(f'{menu}.o2lto.build.flags.optimize=-O2 -flto')
-
-    print(f'{menu}.o3std=Fastest (-O3)')
-    print(f'{menu}.o3std.build.flags.optimize=-O3')
-    print(f'{menu}.o3lto=Fastest (-O3) with LTO')
-    print(f'{menu}.o3lto.build.flags.optimize=-O3 -flto')
-
-    print(f'{menu}.ogstd=Debug (-Og)')
-    print(f'{menu}.ogstd.build.flags.optimize=-Og')
-    print(f'{menu}.o0std=No Optimization (-O0)')
-    print(f'{menu}.o0std.build.flags.optimize=-O0')
-    print()
-
-
-def build_clock(series, values):
+def build_clock(board):
+    board_id = board["id"]
     print()
     print("# Clock Select")
-    name = values["name"]
-    menu = f'{name}.menu.clock'
-    for hsi in values['hsi']:
+    menu = f"{board_id}.menu.clock"
+    for hsi in board["hsi"]:
         if hsi == 0:
-            print(f'{menu}.HSI=HSI Internal')
-            print(f'{menu}.HSI.build.flags.clock=-DSYSCLK_FREQ_HSI=HSI_VALUE -DF_CPU=HSI_VALUE')
-        elif hsi == 'HSI_LP':
-            print(f'{menu}.HSI_LP=HSI_LP Internal')
-            print(f'{menu}.HSI_LP.build.flags.clock=-DSYSCLK_FREQ_HSI_LP=HSI_LP_VALUE -DF_CPU=HSI_LP_VALUE')
+            print(f"{menu}.HSI=HSI Internal")
+            print(f"{menu}.HSI.build.flags.clock=-DSYSCLK_FREQ_HSI=HSI_VALUE -DF_CPU=HSI_VALUE")
+        elif hsi == "HSI_LP":
+            print(f"{menu}.HSI_LP=HSI_LP Internal")
+            print(f"{menu}.HSI_LP.build.flags.clock=-DSYSCLK_FREQ_HSI_LP=HSI_LP_VALUE -DF_CPU=HSI_LP_VALUE")
         else:
-            print(f'{menu}.{hsi}MHz_HSI={hsi}MHz Internal')
-            print(f'{menu}.{hsi}MHz_HSI.build.flags.clock=-DSYSCLK_FREQ_{hsi}MHz_HSI={hsi}000000 -DF_CPU={hsi}000000')
-    for hse in values['hse']:
+            print(f"{menu}.{hsi}MHz_HSI={hsi}MHz Internal")
+            print(f"{menu}.{hsi}MHz_HSI.build.flags.clock=-DSYSCLK_FREQ_{hsi}MHz_HSI={hsi}000000 -DF_CPU={hsi}000000")
+    for hse in board["hse"]:
         if hse == 0:
-            print(f'{menu}.HSE=HSE External')
-            print(f'{menu}.HSE.build.flags.clock=-DSYSCLK_FREQ_HSE=HSE_VALUE -DF_CPU=HSE_VALUE')
+            print(f"{menu}.HSE=HSE External")
+            print(f"{menu}.HSE.build.flags.clock=-DSYSCLK_FREQ_HSE=HSE_VALUE -DF_CPU=HSE_VALUE")
         else:
-            print(f'{menu}.{hse}MHz_HSE={hse}MHz External')
-            print(f'{menu}.{hse}MHz_HSE.build.flags.clock=-DSYSCLK_FREQ_{hse}MHz_HSE={hse}000000 -DF_CPU={hse}000000')
+            print(f"{menu}.{hse}MHz_HSE={hse}MHz External")
+            print(f"{menu}.{hse}MHz_HSE.build.flags.clock=-DSYSCLK_FREQ_{hse}MHz_HSE={hse}000000 -DF_CPU={hse}000000")
     print()
 
 
-def build_debug(series, values):
+def build_optimization(board):
+    board_id = board["id"]
+    print()
+    print("# Optimizations")
+    menu = f"{board_id}.menu.opt"
+
+    print(f"{menu}.osstd=Smallest (-Os default)")
+    print(f"{menu}.osstd.build.flags.optimize=-Os")
+    print(f"{menu}.oslto=Smallest (-Os) with LTO")
+    print(f"{menu}.oslto.build.flags.optimize=-Os -flto")
+
+    print(f"{menu}.o1std=Fast (-O1)")
+    print(f"{menu}.o1std.build.flags.optimize=-O1")
+    print(f"{menu}.o1lto=Fast (-O1) with LTO")
+    print(f"{menu}.o1lto.build.flags.optimize=-O1 -flto")
+
+    print(f"{menu}.o2std=Faster (-O2)")
+    print(f"{menu}.o2std.build.flags.optimize=-O2")
+    print(f"{menu}.o2lto=Faster (-O2) with LTO")
+    print(f"{menu}.o2lto.build.flags.optimize=-O2 -flto")
+
+    print(f"{menu}.o3std=Fastest (-O3)")
+    print(f"{menu}.o3std.build.flags.optimize=-O3")
+    print(f"{menu}.o3lto=Fastest (-O3) with LTO")
+    print(f"{menu}.o3lto.build.flags.optimize=-O3 -flto")
+
+    print(f"{menu}.ogstd=Debug (-Og)")
+    print(f"{menu}.ogstd.build.flags.optimize=-Og")
+    print(f"{menu}.o0std=No Optimization (-O0)")
+    print(f"{menu}.o0std.build.flags.optimize=-O0")
+    print()
+
+
+def build_debug(board):
+    board_id = board["id"]
     print()
     print("# Debug information")
-    name = values["name"]
-    menu = f'{name}.menu.dbg'
-    print(f'{menu}.none=None')
-    print(f'{menu}.none.build.flags.debug=-DNDEBUG')
-    print(f'{menu}.enable_sym=Symbols Enabled (-g)')
-    print(f'{menu}.enable_sym.build.flags.debug=-g -DNDEBUG')
-    print(f'{menu}.enable_log=Core logs Enabled')
-    print(f'{menu}.enable_log.build.flags.debug=')
-    print(f'{menu}.enable_all=Core Logs and Symbols Enabled (-g)')
-    print(f'{menu}.enable_all.build.flags.debug=-g')
+    menu = f"{board_id}.menu.dbg"
+    print(f"{menu}.none=None")
+    print(f"{menu}.none.build.flags.debug=-DNDEBUG")
+    print(f"{menu}.enable_sym=Symbols Enabled (-g)")
+    print(f"{menu}.enable_sym.build.flags.debug=-g -DNDEBUG")
+    print(f"{menu}.enable_log=Core logs Enabled")
+    print(f"{menu}.enable_log.build.flags.debug=")
+    print(f"{menu}.enable_all=Core Logs and Symbols Enabled (-g)")
+    print(f"{menu}.enable_all.build.flags.debug=-g")
     print()
 
 
-def build_runtimelib(series, values):
+def build_runtimelib(board):
+    board_id = board["id"]
     print()
     print("# C Runtime Library")
-    name = values["name"]
-    menu = f'{name}.menu.rtlib'
-    print(f'{menu}.nano=Newlib Nano (default)')
-    print(f'{menu}.nano.build.flags.ldflags=--specs=nano.specs --specs=nosys.specs')
-    print(f'{menu}.nanofp=Newlib Nano + Float Printf')
-    print(f'{menu}.nanofp.build.flags.ldflags=--specs=nano.specs --specs=nosys.specs -u _printf_float')
-    print(f'{menu}.nanofs=Newlib Nano + Float Scanf')
-    print(f'{menu}.nanofs.build.flags.ldflags=--specs=nano.specs --specs=nosys.specs -u _scanf_float')
-    print(f'{menu}.nanofps=Newlib Nano + Float Printf/Scanf')
-    print(f'{menu}.nanofps.build.flags.ldflags=--specs=nano.specs --specs=nosys.specs -u _printf_float -u _scanf_float')
-    print(f'{menu}.full=Newlib Standard')
-    print(f'{menu}.full.build.flags.ldflags=--specs=nosys.specs')
+    menu = f"{board_id}.menu.rtlib"
+    print(f"{menu}.nano=Newlib Nano (default)")
+    print(f"{menu}.nano.build.flags.ldflags=--specs=nano.specs --specs=nosys.specs")
+    print(f"{menu}.nanofp=Newlib Nano + Float Printf")
+    print(f"{menu}.nanofp.build.flags.ldflags=--specs=nano.specs --specs=nosys.specs -u _printf_float")
+    print(f"{menu}.nanofs=Newlib Nano + Float Scanf")
+    print(f"{menu}.nanofs.build.flags.ldflags=--specs=nano.specs --specs=nosys.specs -u _scanf_float")
+    print(f"{menu}.nanofps=Newlib Nano + Float Printf/Scanf")
+    print(f"{menu}.nanofps.build.flags.ldflags=--specs=nano.specs --specs=nosys.specs -u _printf_float -u _scanf_float")
+    print(f"{menu}.full=Newlib Standard")
+    print(f"{menu}.full.build.flags.ldflags=--specs=nosys.specs")
     print()
 
 
-def make_board(series, values):
-    build_header(series, values)
-    build_pnum(series, values)
-    build_usb(series, values)
-    build_upload(series, values)
-    build_clock(series, values)
-    build_optimization(series, values)
-    build_debug(series, values)
-    build_runtimelib(series, values)
+def make_board(board_id, board):
+    merged = merged_board(board_id, board)
+    build_header(merged)
+    build_usb(merged)
+    build_upload(merged)
+    build_clock(merged)
+    build_optimization(merged)
+    build_debug(merged)
+    build_runtimelib(merged)
 
-# ------------------------------
-# main
-# ------------------------------
-build_global_menu()
 
-for k, v in board_list.items():
-    make_board(k, v)
+def emit_boards():
+    build_global_menu()
+    for board_id, board in boards.items():
+        make_board(board_id, board)
+
+
+if __name__ == "__main__":
+    if len(sys.argv) > 1:
+        buffer = io.StringIO()
+        with contextlib.redirect_stdout(buffer):
+            emit_boards()
+        with open(sys.argv[1], "w", encoding="utf-8", newline="\n") as fh:
+            fh.write(buffer.getvalue())
+    else:
+        emit_boards()
