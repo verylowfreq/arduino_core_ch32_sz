@@ -156,11 +156,11 @@ def build_usb(board):
     print()
     print("# USB support")
     menu = f"{board_id}.menu.usb"
-    print(f"{menu}.none=None")
-    print(f"{menu}.none.build.usb_flags=")
     for usb in board["usb"]:
         print(f"{menu}.{usb}={usb_list[usb]['name']}")
         print(f"{menu}.{usb}.build.usb_flags={usb_list[usb]['usb_flags']}")
+    print(f"{menu}.none=None")
+    print(f"{menu}.none.build.usb_flags=")
 
 
 def build_upload(board):

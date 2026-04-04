@@ -38,12 +38,12 @@ suzuno32rv.bootloader.address=0x08000000
 
 
 # USB support
-suzuno32rv.menu.usb.none=None
-suzuno32rv.menu.usb.none.build.usb_flags=
 suzuno32rv.menu.usb.tinyusb_usbd=Adafruit TinyUSB with USBD
 suzuno32rv.menu.usb.tinyusb_usbd.build.usb_flags=-DUSBCON -DUSE_TINYUSB -DCFG_TUD_ENABLED=1 -DCFG_TUD_WCH_USBIP_FSDEV=1 "-I{runtime.platform.path}/libraries/Adafruit_TinyUSB_Arduino/src/arduino"
 suzuno32rv.menu.usb.tinyusb_usbd_usbfsh=Adafruit TinyUSB with USBD/USBFS Host
 suzuno32rv.menu.usb.tinyusb_usbd_usbfsh.build.usb_flags=-DUSBCON -DUSE_TINYUSB -DCFG_TUD_ENABLED=1 -DCFG_TUD_WCH_USBIP_FSDEV=1 -DCFG_TUH_ENABLED=1 -DCFG_TUH_WCH_USBIP_USBFS=1 "-I{runtime.platform.path}/libraries/Adafruit_TinyUSB_Arduino/src/arduino"
+suzuno32rv.menu.usb.none=None
+suzuno32rv.menu.usb.none.build.usb_flags=
 
 # Upload menu
 suzuno32rv.menu.upload_method.ispMethod=WCH-ISP
@@ -170,12 +170,12 @@ suzuno32rv_pm.bootloader.address=0x08000000
 
 
 # USB support
-suzuno32rv_pm.menu.usb.none=None
-suzuno32rv_pm.menu.usb.none.build.usb_flags=
 suzuno32rv_pm.menu.usb.tinyusb_usbd=Adafruit TinyUSB with USBD
 suzuno32rv_pm.menu.usb.tinyusb_usbd.build.usb_flags=-DUSBCON -DUSE_TINYUSB -DCFG_TUD_ENABLED=1 -DCFG_TUD_WCH_USBIP_FSDEV=1 "-I{runtime.platform.path}/libraries/Adafruit_TinyUSB_Arduino/src/arduino"
 suzuno32rv_pm.menu.usb.tinyusb_usbd_usbfsh=Adafruit TinyUSB with USBD/USBFS Host
 suzuno32rv_pm.menu.usb.tinyusb_usbd_usbfsh.build.usb_flags=-DUSBCON -DUSE_TINYUSB -DCFG_TUD_ENABLED=1 -DCFG_TUD_WCH_USBIP_FSDEV=1 -DCFG_TUH_ENABLED=1 -DCFG_TUH_WCH_USBIP_USBFS=1 "-I{runtime.platform.path}/libraries/Adafruit_TinyUSB_Arduino/src/arduino"
+suzuno32rv_pm.menu.usb.none=None
+suzuno32rv_pm.menu.usb.none.build.usb_flags=
 
 # Upload menu
 suzuno32rv_pm.menu.upload_method.hidmethod=HID Bootloader
@@ -302,12 +302,12 @@ suzuduino_uno.bootloader.address=0x08000000
 
 
 # USB support
-suzuduino_uno.menu.usb.none=None
-suzuduino_uno.menu.usb.none.build.usb_flags=
 suzuduino_uno.menu.usb.tinyusb_usbd=Adafruit TinyUSB with USBD
 suzuduino_uno.menu.usb.tinyusb_usbd.build.usb_flags=-DUSBCON -DUSE_TINYUSB -DCFG_TUD_ENABLED=1 -DCFG_TUD_WCH_USBIP_FSDEV=1 "-I{runtime.platform.path}/libraries/Adafruit_TinyUSB_Arduino/src/arduino"
 suzuduino_uno.menu.usb.tinyusb_usbd_usbfsh=Adafruit TinyUSB with USBD/USBFS Host
 suzuduino_uno.menu.usb.tinyusb_usbd_usbfsh.build.usb_flags=-DUSBCON -DUSE_TINYUSB -DCFG_TUD_ENABLED=1 -DCFG_TUD_WCH_USBIP_FSDEV=1 -DCFG_TUH_ENABLED=1 -DCFG_TUH_WCH_USBIP_USBFS=1 "-I{runtime.platform.path}/libraries/Adafruit_TinyUSB_Arduino/src/arduino"
+suzuduino_uno.menu.usb.none=None
+suzuduino_uno.menu.usb.none.build.usb_flags=
 
 # Upload menu
 suzuduino_uno.menu.upload_method.ispMethod=WCH-ISP

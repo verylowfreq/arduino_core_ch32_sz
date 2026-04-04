@@ -61,4 +61,8 @@ void yield(void);
 // Include pins variant
 #include "pins_arduino.h"
 
+#if defined(USE_TINYUSB) && defined(__cplusplus)
+  #include <Adafruit_TinyUSB.h>
+#endif
+
 #endif // Arduino_h
