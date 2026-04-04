@@ -37,9 +37,9 @@ upload_method_list = {
         "upload.tool": "WCH_linkE",
         "bootloader.tool": "WCH_linkE",
     },
-    "hidmethod": {
-        "name": "HID Bootloader",
-        "upload.tool": "hidbootloader",
+    "catbootMethod": {
+        "name": "CAT Bootloader",
+        "upload.tool": "catbootloader",
         "build.ldscript": "Link_bootloader.ld",
         "build.flash_base": "0x08000000",
         "build.flash_offset": "0x00004000",
@@ -60,9 +60,9 @@ profiles = {
         "usb": ["tinyusb_usbd", "tinyusb_usbd_usbfsh"],
         "hsi": [144, 120, 96, 72, 56, 48, 0],
         "hse": [144, 120, 96, 72, 56, 48, 0],
-        "upload_methods": ["ispMethod", "swdMethod", "hidmethod"],
+        "upload_methods": ["ispMethod", "swdMethod", "catbootMethod"],
         "bootloader": {
-            "file": "{runtime.platform.path}/bootloader/hidbootloader-v0.2.1.hex",
+            "file": "{runtime.platform.path}/bootloader/catbootloader-v0.3.1.hex",
             "address": "0x08000000",
         },
     },
@@ -82,7 +82,7 @@ boards = {
         "build_board": "SUZUNO32RV_PM",
         "variant": "CH32V20x/SUZUNO32RV_PM",
         "variant_h": "variant_SUZUNO32RV_PM.h",
-        "upload_methods": ["hidmethod", "ispMethod", "swdMethod"],
+        "upload_methods": ["catbootMethod", "ispMethod", "swdMethod"],
     },
     "suzuduino_uno": {
         "name": "Suzuduino UNO",

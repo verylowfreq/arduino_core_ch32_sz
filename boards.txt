@@ -33,7 +33,7 @@ suzuno32rv.build.IQ_math_RV32=
 suzuno32rv.build.ch_extra_lib=-lprintf
 suzuno32rv.build.board_extra_flags=
 suzuno32rv.debug.tool=gdb-WCH_LinkE
-suzuno32rv.bootloader.file={runtime.platform.path}/bootloader/hidbootloader-v0.2.1.hex
+suzuno32rv.bootloader.file={runtime.platform.path}/bootloader/catbootloader-v0.3.1.hex
 suzuno32rv.bootloader.address=0x08000000
 
 
@@ -56,14 +56,14 @@ suzuno32rv.menu.upload_method.swdMethod.upload.protocol=
 suzuno32rv.menu.upload_method.swdMethod.upload.options=
 suzuno32rv.menu.upload_method.swdMethod.upload.tool=WCH_linkE
 suzuno32rv.menu.upload_method.swdMethod.bootloader.tool=WCH_linkE
-suzuno32rv.menu.upload_method.hidmethod=HID Bootloader
-suzuno32rv.menu.upload_method.hidmethod.upload.protocol=
-suzuno32rv.menu.upload_method.hidmethod.upload.options=
-suzuno32rv.menu.upload_method.hidmethod.upload.tool=hidbootloader
-suzuno32rv.menu.upload_method.hidmethod.build.ldscript=Link_bootloader.ld
-suzuno32rv.menu.upload_method.hidmethod.build.flash_base=0x08000000
-suzuno32rv.menu.upload_method.hidmethod.build.flash_offset=0x00004000
-suzuno32rv.menu.upload_method.hidmethod.build.family_id=0x699b62ec
+suzuno32rv.menu.upload_method.catbootMethod=CAT Bootloader
+suzuno32rv.menu.upload_method.catbootMethod.upload.protocol=
+suzuno32rv.menu.upload_method.catbootMethod.upload.options=
+suzuno32rv.menu.upload_method.catbootMethod.upload.tool=catbootloader
+suzuno32rv.menu.upload_method.catbootMethod.build.ldscript=Link_bootloader.ld
+suzuno32rv.menu.upload_method.catbootMethod.build.flash_base=0x08000000
+suzuno32rv.menu.upload_method.catbootMethod.build.flash_offset=0x00004000
+suzuno32rv.menu.upload_method.catbootMethod.build.family_id=0x699b62ec
 
 # Clock Select
 suzuno32rv.menu.clock.144MHz_HSI=144MHz Internal
@@ -165,7 +165,7 @@ suzuno32rv_pm.build.IQ_math_RV32=
 suzuno32rv_pm.build.ch_extra_lib=-lprintf
 suzuno32rv_pm.build.board_extra_flags=
 suzuno32rv_pm.debug.tool=gdb-WCH_LinkE
-suzuno32rv_pm.bootloader.file={runtime.platform.path}/bootloader/hidbootloader-v0.2.1.hex
+suzuno32rv_pm.bootloader.file={runtime.platform.path}/bootloader/catbootloader-v0.3.1.hex
 suzuno32rv_pm.bootloader.address=0x08000000
 
 
@@ -178,14 +178,14 @@ suzuno32rv_pm.menu.usb.none=None
 suzuno32rv_pm.menu.usb.none.build.usb_flags=
 
 # Upload menu
-suzuno32rv_pm.menu.upload_method.hidmethod=HID Bootloader
-suzuno32rv_pm.menu.upload_method.hidmethod.upload.protocol=
-suzuno32rv_pm.menu.upload_method.hidmethod.upload.options=
-suzuno32rv_pm.menu.upload_method.hidmethod.upload.tool=hidbootloader
-suzuno32rv_pm.menu.upload_method.hidmethod.build.ldscript=Link_bootloader.ld
-suzuno32rv_pm.menu.upload_method.hidmethod.build.flash_base=0x08000000
-suzuno32rv_pm.menu.upload_method.hidmethod.build.flash_offset=0x00004000
-suzuno32rv_pm.menu.upload_method.hidmethod.build.family_id=0x699b62ec
+suzuno32rv_pm.menu.upload_method.catbootMethod=CAT Bootloader
+suzuno32rv_pm.menu.upload_method.catbootMethod.upload.protocol=
+suzuno32rv_pm.menu.upload_method.catbootMethod.upload.options=
+suzuno32rv_pm.menu.upload_method.catbootMethod.upload.tool=catbootloader
+suzuno32rv_pm.menu.upload_method.catbootMethod.build.ldscript=Link_bootloader.ld
+suzuno32rv_pm.menu.upload_method.catbootMethod.build.flash_base=0x08000000
+suzuno32rv_pm.menu.upload_method.catbootMethod.build.flash_offset=0x00004000
+suzuno32rv_pm.menu.upload_method.catbootMethod.build.family_id=0x699b62ec
 suzuno32rv_pm.menu.upload_method.ispMethod=WCH-ISP
 suzuno32rv_pm.menu.upload_method.ispMethod.upload.protocol=
 suzuno32rv_pm.menu.upload_method.ispMethod.upload.options=
@@ -297,7 +297,7 @@ suzuduino_uno.build.IQ_math_RV32=
 suzuduino_uno.build.ch_extra_lib=-lprintf
 suzuduino_uno.build.board_extra_flags=
 suzuduino_uno.debug.tool=gdb-WCH_LinkE
-suzuduino_uno.bootloader.file={runtime.platform.path}/bootloader/hidbootloader-v0.2.1.hex
+suzuduino_uno.bootloader.file={runtime.platform.path}/bootloader/catbootloader-v0.3.1.hex
 suzuduino_uno.bootloader.address=0x08000000
 
 
@@ -320,14 +320,14 @@ suzuduino_uno.menu.upload_method.swdMethod.upload.protocol=
 suzuduino_uno.menu.upload_method.swdMethod.upload.options=
 suzuduino_uno.menu.upload_method.swdMethod.upload.tool=WCH_linkE
 suzuduino_uno.menu.upload_method.swdMethod.bootloader.tool=WCH_linkE
-suzuduino_uno.menu.upload_method.hidmethod=HID Bootloader
-suzuduino_uno.menu.upload_method.hidmethod.upload.protocol=
-suzuduino_uno.menu.upload_method.hidmethod.upload.options=
-suzuduino_uno.menu.upload_method.hidmethod.upload.tool=hidbootloader
-suzuduino_uno.menu.upload_method.hidmethod.build.ldscript=Link_bootloader.ld
-suzuduino_uno.menu.upload_method.hidmethod.build.flash_base=0x08000000
-suzuduino_uno.menu.upload_method.hidmethod.build.flash_offset=0x00004000
-suzuduino_uno.menu.upload_method.hidmethod.build.family_id=0x699b62ec
+suzuduino_uno.menu.upload_method.catbootMethod=CAT Bootloader
+suzuduino_uno.menu.upload_method.catbootMethod.upload.protocol=
+suzuduino_uno.menu.upload_method.catbootMethod.upload.options=
+suzuduino_uno.menu.upload_method.catbootMethod.upload.tool=catbootloader
+suzuduino_uno.menu.upload_method.catbootMethod.build.ldscript=Link_bootloader.ld
+suzuduino_uno.menu.upload_method.catbootMethod.build.flash_base=0x08000000
+suzuduino_uno.menu.upload_method.catbootMethod.build.flash_offset=0x00004000
+suzuduino_uno.menu.upload_method.catbootMethod.build.family_id=0x699b62ec
 
 # Clock Select
 suzuduino_uno.menu.clock.144MHz_HSI=144MHz Internal
