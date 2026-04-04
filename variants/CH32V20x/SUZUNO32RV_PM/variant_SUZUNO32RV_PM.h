@@ -90,7 +90,7 @@
 
 // On-board LED pin number
 #ifndef LED_BUILTIN
-  #define LED_BUILTIN           PA5
+  #define LED_BUILTIN           PA8
 #endif
 
 
