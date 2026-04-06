@@ -62,7 +62,7 @@ profiles = {
         "hse": [144, 120, 96, 72, 56, 48, 0],
         "upload_methods": ["ispMethod", "swdMethod", "catbootMethod"],
         "bootloader": {
-            "file": "{runtime.platform.path}/bootloader/catbootloader-v0.3.1.hex",
+            "file": "{runtime.platform.path}/bootloader/catbootloader-v0.3.2.hex",
             "address": "0x08000000",
         },
     },

@@ -196,7 +196,7 @@ tools.catbootloader.path={runtime.platform.path}/tools/
 tools.catbootloader.cmd=catupload
 tools.catbootloader.upload.params.verbose=
 tools.catbootloader.upload.params.quiet=
-tools.catbootloader.upload.pattern="{path}{cmd}" --bin "{build.path}/{build.project_name}.bin" --address "{build.flash_base}" --offset "{build.flash_offset}" --verify
+tools.catbootloader.upload.pattern="{path}{cmd}" --bin "{build.path}/{build.project_name}.bin" --address "{build.flash_base}" --offset "{build.flash_offset}" --serialport "{upload.port.address}" --verify
 tools.catbootloader.tool.serial=
 
 # Debugger configuration (general options)
