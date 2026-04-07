@@ -100,8 +100,8 @@ public:
   bool attached();                   // return true if this servo is attached, otherwise false
 private:
    uint8_t servoIndex;               // index into the channel data for this servo
-  //  int16_t min;                       // minimum is this value times 4 added to MIN_PULSE_WIDTH
-  //  int16_t max;                       // maximum is this value times 4 added to MAX_PULSE_WIDTH
+   int16_t minPulseWidth;
+   int16_t maxPulseWidth;
 };
 
 #endif
