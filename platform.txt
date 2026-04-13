@@ -9,7 +9,7 @@ version=1.1.0
 
 # Compile variables
 # ----------------------
-compiler.ch.extra_include="-I{build.source.path}" "-I{build.core.path}" "-I{build.core.path}/avr/" "-I{build.core.path}/ch32/" "-I{build.core.path}/ch32/lib/" "-I{build.system.path}/{build.series}/USER/" "-I{build.system.path}/{build.series}/SRC/Core/" "-I{build.system.path}/{build.series}/SRC/Debug/" "-I{build.system.path}/{build.series}/SRC/Startup/" "-I{build.system.path}/{build.series}/SRC/Peripheral/inc/" "-I{build.system.path}/{build.series}/SRC/Peripheral/src/"
+compiler.ch.extra_include="-I{build.source.path}" "-I{build.core.path}" "-I{build.core.path}/avr/" "-I{build.core.path}/ch32/" "-I{build.core.path}/ch32/lib/" "-I{runtime.platform.path}/libraries/Adafruit_TinyUSB_Arduino/src/" "-I{runtime.platform.path}/libraries/Adafruit_TinyUSB_Arduino/src/arduino/" "-I{runtime.platform.path}/libraries/SPI/src/" "-I{build.system.path}/{build.series}/USER/" "-I{build.system.path}/{build.series}/SRC/Core/" "-I{build.system.path}/{build.series}/SRC/Debug/" "-I{build.system.path}/{build.series}/SRC/Startup/" "-I{build.system.path}/{build.series}/SRC/Peripheral/inc/" "-I{build.system.path}/{build.series}/SRC/Peripheral/src/"
 
 #---warning flags
 compiler.warning_flags=-Wunused -Wuninitialized
