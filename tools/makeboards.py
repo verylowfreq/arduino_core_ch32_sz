@@ -82,6 +82,7 @@ boards = {
         "build_board": "SUZUNO32RV_PM",
         "variant": "CH32V20x/SUZUNO32RV_PM",
         "variant_h": "variant_SUZUNO32RV_PM.h",
+        "usb": ["tinyusb_usbd"],
         "upload_methods": ["catbootMethod", "ispMethod", "swdMethod"],
     },
     "suzuduino_uno": {
@@ -90,6 +91,7 @@ boards = {
         "build_board": "SUZUDUINO_UNO",
         "variant": "CH32V20x/SUZUDUINO_UNO",
         "variant_h": "variant_SUZUDUINO_UNO.h",
+        "usb": ["tinyusb_usbd"],
     },
 }
 
