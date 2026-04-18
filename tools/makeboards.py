@@ -40,6 +40,8 @@ upload_method_list = {
     "catbootMethod": {
         "name": "CAT Bootloader",
         "upload.tool": "catbootloader",
+        "upload.use_1200bps_touch": "true",
+        "upload.wait_for_upload_port": "false",
         "build.ldscript": "Link_bootloader.ld",
         "build.flash_base": "0x08000000",
         "build.flash_offset": "0x00004000",
