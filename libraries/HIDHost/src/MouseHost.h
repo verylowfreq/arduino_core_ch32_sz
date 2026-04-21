@@ -10,6 +10,7 @@ public:
   typedef void (*UmountCallback)(uint8_t dev_addr, uint8_t instance);
   typedef void (*MoveCallback)(int16_t dx, int16_t dy, uint8_t buttons);
   typedef void (*WheelCallback)(int8_t delta);
+  typedef void (*ReportCallback)(uint8_t const* report, uint16_t len);
 
   MouseHostAPI();
 
@@ -24,6 +25,7 @@ public:
   void onMove(MoveCallback cb);
   void onWheel(WheelCallback cb);
   void onHWheel(WheelCallback cb);
+  void onReport(ReportCallback cb);
 };
 
 extern MouseHostAPI MouseHost;

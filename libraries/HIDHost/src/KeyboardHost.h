@@ -15,6 +15,7 @@ public:
                                 uint16_t pid);
   typedef void (*UmountCallback)(uint8_t dev_addr, uint8_t instance);
   typedef void (*KeyCallback)(uint8_t keycode, uint8_t modifiers);
+  typedef void (*ReportCallback)(uint8_t const* report, uint16_t len);
 
   KeyboardHostAPI();
 
@@ -28,6 +29,7 @@ public:
   void onUmount(UmountCallback cb);
   void onKeyDown(KeyCallback cb);
   void onKeyUp(KeyCallback cb);
+  void onReport(ReportCallback cb);
 
   bool setLeds(uint8_t leds);
   bool setLeds(uint8_t dev_addr, uint8_t instance, uint8_t leds);

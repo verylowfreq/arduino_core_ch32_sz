@@ -60,12 +60,14 @@ struct HIDHostState {
   KeyboardHostAPI::UmountCallback kb_umount_cb;
   KeyboardHostAPI::KeyCallback kb_key_down_cb;
   KeyboardHostAPI::KeyCallback kb_key_up_cb;
+  KeyboardHostAPI::ReportCallback kb_report_cb;
 
   MouseHostAPI::MountCallback mouse_mount_cb;
   MouseHostAPI::UmountCallback mouse_umount_cb;
   MouseHostAPI::MoveCallback mouse_move_cb;
   MouseHostAPI::WheelCallback mouse_wheel_cb;
   MouseHostAPI::WheelCallback mouse_hwheel_cb;
+  MouseHostAPI::ReportCallback mouse_report_cb;
 
   GamepadHostAPI::MountCallback gamepad_mount_cb;
   GamepadHostAPI::UmountCallback gamepad_umount_cb;
@@ -331,11 +333,15 @@ HIDItfState* first_keyboard_itf() {
 
 void dispatch_keyboard_report(HIDItfState& itf, uint8_t const* report,
                               uint16_t len) {
+  HIDHostState& s = st();
+  if (s.kb_report_cb != NULL) {
+    s.kb_report_cb(report, len);
+  }
+
   if (len < 8) {
     return;
   }
 
-  HIDHostState& s = st();
   uint8_t const modifiers = report[0];
   uint8_t const* keys = report + 2;
   uint8_t const prev_modifiers = itf.prev_modifiers;
@@ -404,11 +410,15 @@ void dispatch_keyboard_report(HIDItfState& itf, uint8_t const* report,
 
 void dispatch_mouse_report(HIDItfState& itf, uint8_t const* report,
                            uint16_t len) {
+  HIDHostState& s = st();
+  if (s.mouse_report_cb != NULL) {
+    s.mouse_report_cb(report, len);
+  }
+
   if (len == 0) {
     return;
   }
 
-  HIDHostState& s = st();
   uint8_t const buttons = report[0];
   int16_t dx = 0;
   int16_t dy = 0;
@@ -500,6 +510,8 @@ void KeyboardHostAPI::onKeyDown(KeyCallback cb) { st().kb_key_down_cb = cb; }
 
 void KeyboardHostAPI::onKeyUp(KeyCallback cb) { st().kb_key_up_cb = cb; }
 
+void KeyboardHostAPI::onReport(ReportCallback cb) { st().kb_report_cb = cb; }
+
 bool KeyboardHostAPI::setLeds(uint8_t leds) {
   HIDItfState* itf = first_keyboard_itf();
   if (itf == NULL) {
@@ -567,6 +579,8 @@ void MouseHostAPI::onMove(MoveCallback cb) { st().mouse_move_cb = cb; }
 void MouseHostAPI::onWheel(WheelCallback cb) { st().mouse_wheel_cb = cb; }
 
 void MouseHostAPI::onHWheel(WheelCallback cb) { st().mouse_hwheel_cb = cb; }
+
+void MouseHostAPI::onReport(ReportCallback cb) { st().mouse_report_cb = cb; }
 
 GamepadHostAPI::GamepadHostAPI() {}
 
@@ -922,6 +936,7 @@ void KeyboardHostAPI::onMount(MountCallback) {}
 void KeyboardHostAPI::onUmount(UmountCallback) {}
 void KeyboardHostAPI::onKeyDown(KeyCallback) {}
 void KeyboardHostAPI::onKeyUp(KeyCallback) {}
+void KeyboardHostAPI::onReport(ReportCallback) {}
 bool KeyboardHostAPI::setLeds(uint8_t) { return false; }
 bool KeyboardHostAPI::setLeds(uint8_t, uint8_t, uint8_t) { return false; }
 int KeyboardHostAPI::available() { return 0; }
@@ -942,6 +957,7 @@ void MouseHostAPI::onUmount(UmountCallback) {}
 void MouseHostAPI::onMove(MoveCallback) {}
 void MouseHostAPI::onWheel(WheelCallback) {}
 void MouseHostAPI::onHWheel(WheelCallback) {}
+void MouseHostAPI::onReport(ReportCallback) {}
 
 GamepadHostAPI::GamepadHostAPI() {}
 bool GamepadHostAPI::begin() { return false; }
