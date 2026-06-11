@@ -165,7 +165,11 @@ class SPIClass {
       beginTransaction(CS_PIN_CONTROLLED_BY_USER, settings);
     }
 
-    void endTransaction(uint8_t pin);
+    void endTransaction(uint8_t pin)
+    {
+      RemovePin(pin);
+      _CSPinConfig = NO_CONFIG;
+    }
     void endTransaction(void)
     {
       endTransaction(CS_PIN_CONTROLLED_BY_USER);

@@ -118,16 +118,6 @@ void SPIClass::beginTransaction(uint8_t _pin, SPISettings settings)
 }
 
 /**
-  * @brief  Remove the CS pin and the settings associated to the SPI instance.
-  * @param  _pin: CS pin (optional)
-  */
-void SPIClass::endTransaction(uint8_t _pin)
-{
-  RemovePin(_pin);
-  _CSPinConfig = NO_CONFIG;
-}
-
-/**
   * @brief  Deinitialize the SPI instance and stop it.
   */
 void SPIClass::end()
@@ -422,4 +412,3 @@ void SPIClass::detachInterrupt(void)
 {
   // Should be disableInterrupt()
 }
-
