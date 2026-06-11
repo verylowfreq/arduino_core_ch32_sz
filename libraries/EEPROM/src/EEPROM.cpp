@@ -76,28 +76,46 @@ void EEPROMClass::erase(void) {
     _data[i]=0xFF;
 }
 
+static void loopdelay(uint32_t count) {
+  count /= 3;
+  for (volatile uint32_t i = 0; i < count; i++) {
+    __asm__ volatile ("nop");
+  }
+}
 
 bool EEPROMClass::commit()
 {
   if(!_dirty)
     return(true);
 
+  __disable_irq();
+
   FLASH_Unlock_Fast();
   FLASH_Enhance_Mode(DISABLE);
+  // delay(1);
+  loopdelay(SystemCoreClock / 1000);
 
-  for (uint32_t i = 0; i < _size; i += FLASH_PAGE_SIZE) {
-    //WORKAROUND: Need this delay
-    delay(1);
-    volatile const uint32_t flash_addr = EEPROM_AREA_ADDRESS + i;
+  for (int i = 0; i < EEPROM_SIZE / FLASH_PAGE_SIZE; i++) {
+    uint32_t offset = i * FLASH_PAGE_SIZE;
+    uint32_t flash_addr = EEPROM_AREA_ADDRESS + offset;
+    uint32_t const* dataptr = (uint32_t*)&_data[offset];
     FLASH_ErasePage_Fast(flash_addr);
-    FLASH_ProgramPage_Fast(flash_addr, (uint32_t*)(&_data[i]));
+    FLASH_ProgramPage_Fast(flash_addr, dataptr);
   }
 
   FLASH_Enhance_Mode(ENABLE);
+  // delay(1);
+  loopdelay(SystemCoreClock / 1000);
   FLASH_Lock_Fast();
-  _dirty = false;
+  FLASH_Lock();
 
-  return(true);
+  __enable_irq();
+
+  bool matched = memcmp(_data, (void*)EEPROM_AREA_ADDRESS, EEPROM_SIZE) == 0;
+  if (matched) {
+    _dirty = false;
+  }
+  return matched;
 }
 
 bool EEPROMClass::end() {
