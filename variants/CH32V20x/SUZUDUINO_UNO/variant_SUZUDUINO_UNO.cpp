@@ -89,6 +89,7 @@ void pre_init(void) {
   FLASH->CTLR |= (1 << 24); // Enhanced Read Mode
 
   FLASH->CTLR |= (1 << 15); // FLASH_Lock_Fast();
+  FLASH->CTLR |= (1 << 7); // FLASH_Lock();
 
   hw_config_init();
 }

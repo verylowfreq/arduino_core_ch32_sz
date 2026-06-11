@@ -136,19 +136,20 @@ handle_reset:
 	li t0, 0x3
 	csrw 0x804, t0
 
-    /* Enable interrupt */
-   	li t0, 0x88           
-   	csrs mstatus, t0
-
  	la t0, _vector_base
     ori t0, t0, 3           
 	csrw mtvec, t0
+
+    jal  SystemInit
 
     la a0, __libc_fini_array
     call atexit
     call __libc_init_array
 
-    jal  SystemInit
+    /* Enable interrupt */
+   	li t0, 0x88           
+   	csrs mstatus, t0
+
 	la t0, main
 	csrw mepc, t0
 	mret
