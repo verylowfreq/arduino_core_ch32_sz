@@ -33,7 +33,7 @@ suzuno32rv.build.IQ_math_RV32=
 suzuno32rv.build.ch_extra_lib=-lprintf
 suzuno32rv.build.board_extra_flags=
 suzuno32rv.debug.tool=gdb-WCH_LinkE
-suzuno32rv.bootloader.file={runtime.platform.path}/bootloader/catbootloader-v0.3.2.hex
+suzuno32rv.bootloader.file={runtime.platform.path}/bootloader/catbootloader-v0.3.3.hex
 suzuno32rv.bootloader.address=0x08000000
 
 
@@ -167,7 +167,7 @@ suzuno32rv_pm.build.IQ_math_RV32=
 suzuno32rv_pm.build.ch_extra_lib=-lprintf
 suzuno32rv_pm.build.board_extra_flags=
 suzuno32rv_pm.debug.tool=gdb-WCH_LinkE
-suzuno32rv_pm.bootloader.file={runtime.platform.path}/bootloader/catbootloader-v0.3.2.hex
+suzuno32rv_pm.bootloader.file={runtime.platform.path}/bootloader/catbootloader-v0.3.3.hex
 suzuno32rv_pm.bootloader.address=0x08000000
 
 
@@ -299,7 +299,7 @@ suzuduino_uno.build.IQ_math_RV32=
 suzuduino_uno.build.ch_extra_lib=-lprintf
 suzuduino_uno.build.board_extra_flags=
 suzuduino_uno.debug.tool=gdb-WCH_LinkE
-suzuduino_uno.bootloader.file={runtime.platform.path}/bootloader/catbootloader-v0.3.2.hex
+suzuduino_uno.bootloader.file={runtime.platform.path}/bootloader/catbootloader-v0.3.3.hex
 suzuduino_uno.bootloader.address=0x08000000
 
 
